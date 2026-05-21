@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Plus, Upload, Image, FileText, Edit2, Trash2, X, Check, Sparkles } from 'lucide-react'
+import { Plus, Upload, Image, FileText, Edit2, Trash2, X, Sparkles } from 'lucide-react'
 import { useAppStore } from '@/store/useAppStore'
 import { Dish, PREDEFINED_TAGS, TAG_CATEGORIES, TagCategory } from '@/types'
 import { DEMO_DISHES } from '@/utils/demoData'
@@ -16,161 +16,150 @@ export function MenuPage() {
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const fileInputRef = useRef<HTMLInputElement>(null)
   const csvInputRef = useRef<HTMLInputElement>(null)
-  
+
   const handleAddDish = () => {
     if (!newDishName.trim()) return
-    
+
     const newDish: Dish = {
       id: `dish-${Date.now()}`,
       name: newDishName.trim(),
       tags: selectedTags,
       stats: {
-        recommendedCount: 0,
         pickCount: 0,
         rejectCount: 0,
       },
       createdAt: Date.now(),
     }
-    
+
     addDish(newDish)
     setNewDishName('')
     setSelectedTags([])
     setShowAddModal(false)
   }
-  
+
   const handleUpdateDish = () => {
     if (!editingDish || !newDishName.trim()) return
-    
+
     updateDish(editingDish.id, {
       name: newDishName.trim(),
       tags: selectedTags,
     })
-    
+
     setEditingDish(null)
     setNewDishName('')
     setSelectedTags([])
   }
-  
+
   const handleDeleteDish = (id: string) => {
     if (confirm('确定要删除这个菜品吗？')) {
       deleteDish(id)
     }
   }
-  
+
   const openEditModal = (dish: Dish) => {
     setEditingDish(dish)
     setNewDishName(dish.name)
     setSelectedTags(dish.tags)
   }
-  
+
   const toggleTag = (tagId: string) => {
-    setSelectedTags(prev => 
-      prev.includes(tagId) 
+    setSelectedTags(prev =>
+      prev.includes(tagId)
         ? prev.filter(t => t !== tagId)
         : [...prev, tagId]
     )
   }
-  
-  // CSV 文件处理
+
   const handleCSVUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
-    
+
     const reader = new FileReader()
     reader.onload = (event) => {
       const text = event.target?.result as string
       const lines = text.split('\n')
-      
+
       if (lines.length < 2) {
         alert('CSV文件格式错误')
         return
       }
-      
-      // 解析表头
+
       const headers = lines[0].split(',').map(h => h.trim())
       const nameIndex = headers.findIndex(h => h.includes('名称') || h.toLowerCase() === 'name')
       const cuisineIndex = headers.findIndex(h => h.includes('菜系') || h.toLowerCase() === 'cuisine')
       const tasteIndex = headers.findIndex(h => h.includes('口味') || h.toLowerCase() === 'taste')
       const typeIndex = headers.findIndex(h => h.includes('类型') || h.toLowerCase() === 'type')
-      
+
       if (nameIndex === -1) {
         alert('CSV文件必须包含"菜品名称"列')
         return
       }
-      
-      // 解析数据行
+
       const newDishes: Dish[] = []
       for (let i = 1; i < lines.length; i++) {
         const values = lines[i].split(',').map(v => v.trim())
         if (values[nameIndex]) {
           const tags: string[] = []
-          
-          // 匹配菜系Tag
+
           if (cuisineIndex !== -1 && values[cuisineIndex]) {
             const cuisineTag = PREDEFINED_TAGS.find(
               t => t.category === 'cuisine' && t.name === values[cuisineIndex]
             )
             if (cuisineTag) tags.push(cuisineTag.id)
           }
-          
-          // 匹配口味Tag
+
           if (tasteIndex !== -1 && values[tasteIndex]) {
             const tasteTag = PREDEFINED_TAGS.find(
               t => t.category === 'taste' && t.name === values[tasteIndex]
             )
             if (tasteTag) tags.push(tasteTag.id)
           }
-          
-          // 匹配类型Tag
+
           if (typeIndex !== -1 && values[typeIndex]) {
             const typeTag = PREDEFINED_TAGS.find(
               t => t.category === 'type' && t.name === values[typeIndex]
             )
             if (typeTag) tags.push(typeTag.id)
           }
-          
+
           newDishes.push({
             id: `dish-${Date.now()}-${i}`,
             name: values[nameIndex],
             tags,
-            stats: { recommendedCount: 0, pickCount: 0, rejectCount: 0 },
+            stats: { pickCount: 0, rejectCount: 0 },
             createdAt: Date.now(),
           })
         }
       }
-      
+
       if (newDishes.length > 0) {
         setDishes([...dishes, ...newDishes])
         alert(`成功导入 ${newDishes.length} 个菜品`)
         setShowUploadModal(false)
       }
     }
-    
+
     reader.readAsText(file)
     e.target.value = ''
   }
-  
-  // 图片OCR（模拟）
+
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
-    
-    // 这里应该调用OCR服务，暂时用模拟数据
+
     alert('图片OCR功能需要接入OCR服务（如腾讯云OCR），当前暂未实现。\n请使用CSV导入或手动添加。')
     e.target.value = ''
   }
-  
+
   return (
     <div className="flex flex-col h-full">
-      {/* 标题 */}
       <div className="pt-8 pb-4 px-6">
         <h1 className="text-2xl font-bold text-gray-900">菜单管理</h1>
         <p className="text-gray-500 text-sm mt-1">
           共 {dishes.length} 个菜品
         </p>
       </div>
-      
-      {/* 操作按钮 */}
+
       <div className="flex gap-3 px-6 mb-4">
         <button
           onClick={() => setShowAddModal(true)}
@@ -179,7 +168,7 @@ export function MenuPage() {
           <Plus size={20} />
           手动添加
         </button>
-        
+
         <button
           onClick={() => setShowUploadModal(true)}
           className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-gray-100 text-gray-700 font-medium hover:bg-gray-200 transition-colors btn-press"
@@ -188,8 +177,7 @@ export function MenuPage() {
           导入
         </button>
       </div>
-      
-      {/* 快速体验按钮 */}
+
       {dishes.length === 0 && (
         <div className="px-6 mb-4">
           <button
@@ -201,8 +189,7 @@ export function MenuPage() {
           </button>
         </div>
       )}
-      
-      {/* 菜品列表 */}
+
       <div className="flex-1 overflow-auto px-6 pb-24">
         {dishes.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full text-center">
@@ -242,7 +229,7 @@ export function MenuPage() {
                       <span>跳过: {dish.stats.rejectCount}</span>
                     </div>
                   </div>
-                  
+
                   <div className="flex gap-2">
                     <button
                       onClick={() => openEditModal(dish)}
@@ -263,8 +250,7 @@ export function MenuPage() {
           </div>
         )}
       </div>
-      
-      {/* 添加/编辑菜品弹窗 */}
+
       <AnimatePresence>
         {(showAddModal || editingDish) && (
           <motion.div
@@ -302,8 +288,7 @@ export function MenuPage() {
                   <X size={20} />
                 </button>
               </div>
-              
-              {/* 菜品名称 */}
+
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   菜品名称
@@ -316,17 +301,16 @@ export function MenuPage() {
                   className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange-500 focus:outline-none"
                 />
               </div>
-              
-              {/* Tag 选择 */}
+
               <div className="mb-6">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   标签
                 </label>
-                
+
                 {(Object.keys(TAG_CATEGORIES) as TagCategory[]).map(category => {
                   const categoryTags = PREDEFINED_TAGS.filter(t => t.category === category)
                   const categoryInfo = TAG_CATEGORIES[category]
-                  
+
                   return (
                     <div key={category} className="mb-3">
                       <p className="text-xs text-gray-500 mb-1">
@@ -351,8 +335,7 @@ export function MenuPage() {
                   )
                 })}
               </div>
-              
-              {/* 提交按钮 */}
+
               <button
                 onClick={editingDish ? handleUpdateDish : handleAddDish}
                 disabled={!newDishName.trim()}
@@ -364,8 +347,7 @@ export function MenuPage() {
           </motion.div>
         )}
       </AnimatePresence>
-      
-      {/* 上传弹窗 */}
+
       <AnimatePresence>
         {showUploadModal && (
           <motion.div
@@ -391,9 +373,8 @@ export function MenuPage() {
                   <X size={20} />
                 </button>
               </div>
-              
+
               <div className="space-y-3">
-                {/* 图片上传 */}
                 <button
                   onClick={() => fileInputRef.current?.click()}
                   className="w-full flex items-center gap-4 p-4 rounded-xl border-2 border-dashed border-gray-200 hover:border-orange-500 transition-colors"
@@ -413,8 +394,7 @@ export function MenuPage() {
                   onChange={handleImageUpload}
                   className="hidden"
                 />
-                
-                {/* CSV上传 */}
+
                 <button
                   onClick={() => csvInputRef.current?.click()}
                   className="w-full flex items-center gap-4 p-4 rounded-xl border-2 border-dashed border-gray-200 hover:border-orange-500 transition-colors"
@@ -435,8 +415,7 @@ export function MenuPage() {
                   className="hidden"
                 />
               </div>
-              
-              {/* CSV格式说明 */}
+
               <div className="mt-6 p-4 bg-gray-50 rounded-xl">
                 <p className="text-sm font-medium text-gray-700 mb-2">CSV格式示例：</p>
                 <code className="text-xs text-gray-600 block overflow-x-auto">

@@ -9,21 +9,19 @@ import { PREDEFINED_TAGS } from '@/types'
 export function CollectionPage() {
   const { pickHistory, backupList, dishes, removeFromBackup, pickFromBackup } = useAppStore()
   const [activeTab, setActiveTab] = useState<'backup' | 'history'>('backup')
-  
-  // 获取备选菜品详情
+
   const backupDishes = backupList.map(backup => ({
     ...backup,
     dish: dishes.find(d => d.id === backup.dishId),
   })).filter(b => b.dish)
-  
-  // 统计最常Pick的Tag
+
   const tagPickCount: Record<string, number> = {}
   pickHistory.forEach(record => {
     record.tags.forEach(tagId => {
       tagPickCount[tagId] = (tagPickCount[tagId] || 0) + 1
     })
   })
-  
+
   const topTags = Object.entries(tagPickCount)
     .sort((a, b) => b[1] - a[1])
     .slice(0, 5)
@@ -32,15 +30,13 @@ export function CollectionPage() {
       return { tag, count }
     })
     .filter(t => t.tag)
-  
+
   return (
     <div className="flex flex-col h-full">
-      {/* 标题 */}
       <div className="pt-8 pb-4 px-6">
         <h1 className="text-2xl font-bold text-gray-900">我的收藏</h1>
       </div>
-      
-      {/* Tab 切换 */}
+
       <div className="flex gap-2 px-6 mb-4">
         <button
           onClick={() => setActiveTab('backup')}
@@ -53,7 +49,7 @@ export function CollectionPage() {
           <Star size={18} />
           备选 ({backupList.length})
         </button>
-        
+
         <button
           onClick={() => setActiveTab('history')}
           className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-medium transition-colors ${
@@ -66,11 +62,9 @@ export function CollectionPage() {
           Pick历史 ({pickHistory.length})
         </button>
       </div>
-      
-      {/* 内容区域 */}
+
       <div className="flex-1 overflow-auto px-6 pb-24">
         {activeTab === 'backup' ? (
-          // 备选列表
           backupDishes.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center">
               <div className="text-6xl mb-4">⭐</div>
@@ -105,7 +99,7 @@ export function CollectionPage() {
                         })}
                       </div>
                     </div>
-                    
+
                     <div className="flex gap-2">
                       <button
                         onClick={() => pickFromBackup(backup.id)}
@@ -128,7 +122,6 @@ export function CollectionPage() {
             </div>
           )
         ) : (
-          // Pick历史
           <>
             {pickHistory.length === 0 ? (
               <div className="flex flex-col items-center justify-center h-full text-center">
@@ -140,7 +133,6 @@ export function CollectionPage() {
               </div>
             ) : (
               <>
-                {/* 统计卡片 */}
                 {topTags.length > 0 && (
                   <div className="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-xl p-4 mb-4">
                     <div className="flex items-center gap-2 mb-3">
@@ -159,8 +151,7 @@ export function CollectionPage() {
                     </div>
                   </div>
                 )}
-                
-                {/* 历史列表 */}
+
                 <div className="space-y-3">
                   {pickHistory.map((record, index) => (
                     <motion.div
@@ -187,7 +178,7 @@ export function CollectionPage() {
                             })}
                           </div>
                         </div>
-                        
+
                         <div className="flex items-center gap-1 text-gray-400 text-xs">
                           <Clock size={12} />
                           {new Date(record.timestamp).toLocaleDateString('zh-CN', {

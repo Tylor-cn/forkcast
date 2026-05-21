@@ -17,7 +17,6 @@ body {
   min-height: 100vh;
 }
 
-/* 卡片滑动动画 */
 .card-swipe-left {
   animation: swipeLeft 0.3s ease-out forwards;
 }
@@ -48,17 +47,14 @@ body {
   }
 }
 
-/* 底部导航栏 */
 .bottom-nav {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
-/* 卡片阴影 */
 .card-shadow {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-/* 按钮点击效果 */
 .btn-press:active {
   transform: scale(0.95);
 }

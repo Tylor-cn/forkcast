@@ -1,0 +1,45 @@
+# 依赖
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Next.js 构建输出
+.next
+out
+
+# 测试
+coverage
+
+# 环境变量
+.env
+.env*.local
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git
+.gitignore
+
+# 文档（可选，根据需求保留）
+README.md
+*.md
+
+# CI/CD 配置（不需要在镜像中）
+.github
+.gitlab-ci.yml
+
+# 日志
+*.log
+
+# 临时文件
+*.tmp
+*.temp

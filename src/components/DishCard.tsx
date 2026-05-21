@@ -2,7 +2,7 @@
 
 import { motion, useMotionValue, useTransform, PanInfo } from 'framer-motion'
 import { X, Star, Heart } from 'lucide-react'
-import { Dish, PREDEFINED_TAGS, TAG_CATEGORIES } from '@/types'
+import { Dish, PREDEFINED_TAGS } from '@/types'
 
 interface DishCardProps {
   dish: Dish
@@ -16,11 +16,10 @@ export function DishCard({ dish, onReject, onBackup, onPick, index }: DishCardPr
   const x = useMotionValue(0)
   const rotate = useTransform(x, [-200, 200], [-30, 30])
   const opacity = useTransform(x, [-200, -100, 0, 100, 200], [0, 0.5, 1, 0.5, 0])
-  
-  // 根据滑动方向显示操作提示
+
   const rejectOpacity = useTransform(x, [-150, -50], [1, 0])
   const pickOpacity = useTransform(x, [50, 150], [0, 1])
-  
+
   const handleDragEnd = (_: any, info: PanInfo) => {
     const threshold = 100
     if (info.offset.x < -threshold) {
@@ -29,23 +28,16 @@ export function DishCard({ dish, onReject, onBackup, onPick, index }: DishCardPr
       onPick()
     }
   }
-  
-  // 获取Tag显示信息
-  const getTagInfo = (tagId: string) => {
-    const tag = PREDEFINED_TAGS.find(t => t.id === tagId)
-    return tag ? { name: tag.name, category: tag.category } : null
-  }
-  
-  // 按分类分组显示Tag
+
   const groupedTags = dish.tags.reduce((acc, tagId) => {
-    const info = getTagInfo(tagId)
-    if (info) {
-      if (!acc[info.category]) acc[info.category] = []
-      acc[info.category].push(info.name)
+    const tag = PREDEFINED_TAGS.find(t => t.id === tagId)
+    if (tag) {
+      if (!acc[tag.category]) acc[tag.category] = []
+      acc[tag.category].push(tag.name)
     }
     return acc
   }, {} as Record<string, string[]>)
-  
+
   return (
     <motion.div
       className="absolute w-full"
@@ -67,7 +59,6 @@ export function DishCard({ dish, onReject, onBackup, onPick, index }: DishCardPr
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
     >
       <div className="bg-white rounded-2xl card-shadow overflow-hidden">
-        {/* 滑动提示 */}
         <motion.div
           className="absolute left-4 top-1/2 -translate-y-1/2 z-10"
           style={{ opacity: rejectOpacity }}
@@ -76,7 +67,7 @@ export function DishCard({ dish, onReject, onBackup, onPick, index }: DishCardPr
             <X size={24} />
           </div>
         </motion.div>
-        
+
         <motion.div
           className="absolute right-4 top-1/2 -translate-y-1/2 z-10"
           style={{ opacity: pickOpacity }}
@@ -85,12 +76,11 @@ export function DishCard({ dish, onReject, onBackup, onPick, index }: DishCardPr
             <Heart size={24} />
           </div>
         </motion.div>
-        
-        {/* 菜品图片 */}
+
         {dish.imageUrl ? (
           <div className="h-40 bg-gray-100 relative">
-            <img 
-              src={dish.imageUrl} 
+            <img
+              src={dish.imageUrl}
               alt={dish.name}
               className="w-full h-full object-cover"
             />
@@ -100,14 +90,12 @@ export function DishCard({ dish, onReject, onBackup, onPick, index }: DishCardPr
             <span className="text-6xl">🍽️</span>
           </div>
         )}
-        
-        {/* 菜品信息 */}
+
         <div className="p-4">
           <h3 className="text-xl font-bold text-gray-900 mb-2">{dish.name}</h3>
-          
-          {/* Tags */}
+
           <div className="flex flex-wrap gap-2">
-            {Object.entries(groupedTags).map(([category, tags]) => (
+            {Object.entries(groupedTags).map(([category, tags]) =>
               tags.map(tag => (
                 <span
                   key={`${category}-${tag}`}
@@ -116,11 +104,10 @@ export function DishCard({ dish, onReject, onBackup, onPick, index }: DishCardPr
                   {tag}
                 </span>
               ))
-            ))}
+            )}
           </div>
         </div>
-        
-        {/* 操作按钮 */}
+
         <div className="flex justify-center gap-4 p-4 pt-0">
           <button
             onClick={onReject}
@@ -128,14 +115,14 @@ export function DishCard({ dish, onReject, onBackup, onPick, index }: DishCardPr
           >
             <X className="text-gray-600 hover:text-red-500" size={24} />
           </button>
-          
+
           <button
             onClick={onBackup}
             className="w-12 h-12 rounded-full bg-gray-100 hover:bg-yellow-100 flex items-center justify-center transition-colors btn-press"
           >
             <Star className="text-gray-600 hover:text-yellow-500" size={20} />
           </button>
-          
+
           <button
             onClick={onPick}
             className="w-14 h-14 rounded-full bg-gray-100 hover:bg-green-100 flex items-center justify-center transition-colors btn-press"

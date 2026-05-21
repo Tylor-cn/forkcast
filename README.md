@@ -1,116 +1,81 @@
-# 今天中午吃什么？
+# Forkcast - 今天到底想吃啥？
 
-一个基于排除法偏好学习的动态推荐系统，帮助用户快速决策午餐选择。
+> 基于认知心理学的智能餐饮推荐系统
 
-## 功能特性
+## 🚀 快速开始
 
-### 🍽️ 核心功能
-
-- **智能推荐**：基于用户反馈动态调整推荐权重
-- **卡片滑动交互**：左滑跳过，右滑选择，移动端友好
-- **偏好学习**：记录负反馈（不想吃）和正反馈（备选、Pick）
-- **多模式推荐**：短期偏好、长期偏好、混合模式
-
-### 📋 菜单管理
-
-- 手动添加菜品，支持自定义标签
-- CSV文件批量导入
-- 图片OCR识别（需接入OCR服务）
-
-### ⭐ 收藏功能
-
-- 备选列表：暂存感兴趣的菜品
-- Pick历史：查看过往选择记录
-- 偏好统计：分析口味偏好趋势
-
-### ⚙️ 偏好设置
-
-- 推荐模式切换
-- 混合比例调整
-- 偏好数据重置
-
-## 技术栈
-
-- **框架**：Next.js 14 (App Router)
-- **语言**：TypeScript
-- **状态管理**：Zustand (持久化存储)
-- **动画**：Framer Motion
-- **样式**：Tailwind CSS
-- **图标**：Lucide React
-
-## 推荐算法
-
-### 权重计算
-
-```
-推荐分数 = Σ(Tag权重) × 菜系权重 × 随机因子 × 展示惩罚
-```
-
-### 反馈机制
-
-- **负反馈（❌）**：Tag权重 × 0.7，菜系权重 × 0.8
-- **备选（⭐）**：Tag权重 × 1.1
-- **Pick（❤️）**：Tag权重 × 1.5，菜系权重 × 1.3
-
-### Multi-Armed Bandit
-
-- 10%概率探索低权重菜品
-- 探索概率随Session进行逐渐降低
-
-## 快速开始
+### 本地开发
 
 ```bash
-# 安装依赖
 npm install
-
-# 开发模式
 npm run dev
-
-# 构建
-npm run build
-
-# 生产模式
-npm start
 ```
 
-## CSV 导入格式
+打开 [http://localhost:3000](http://localhost:3000) 即可使用。
 
-```csv
-菜品名称,菜系,口味,类型
-宫保鸡丁,川菜,辣,热菜
-糖醋里脊,中餐,甜,热菜
-清蒸鲈鱼,粤菜,清淡,热菜
+### Docker 部署
+
+```bash
+# 构建并启动
+docker compose up -d
+
+# 查看日志
+docker compose logs -f
+
+# 停止服务
+docker compose down
 ```
 
-## 项目结构
+### 一键发布
 
-```
-src/
-├── app/                 # Next.js App Router
-│   ├── layout.tsx       # 根布局
-│   ├── page.tsx         # 主页面
-│   └── globals.css      # 全局样式
-├── components/          # React 组件
-│   ├── BottomNav.tsx    # 底部导航
-│   ├── DishCard.tsx     # 菜品卡片
-│   ├── RecommendPage.tsx # 推荐页
-│   ├── MenuPage.tsx     # 菜单管理页
-│   ├── CollectionPage.tsx # 收藏页
-│   └── SettingsPage.tsx # 设置页
-├── store/               # 状态管理
-│   └── useAppStore.ts   # Zustand store
-├── types/               # TypeScript 类型
-│   └── index.ts         # 类型定义
-└── utils/               # 工具函数
+```bash
+# 发布到 Gitee（默认标签: latest）
+./deploy.sh
+
+# 指定版本标签
+./deploy.sh v1.0.0
+
+# 指定版本和提交信息
+./deploy.sh v1.0.0 "feat: 新增推荐算法"
 ```
 
-## 待实现功能
+## 🐳 Docker 构建
 
-- [ ] 图片OCR识别（接入腾讯云OCR）
-- [ ] 菜品图片上传
-- [ ] PWA支持
-- [ ] 深色模式
+```bash
+# 手动构建
+./build.sh
 
-## License
+# 构建指定版本
+./build.sh v1.0.0
+```
+
+## 📦 项目结构
+
+```
+.
+├── Dockerfile              # Docker 镜像定义
+├── docker-compose.yml      # Docker Compose 配置
+├── build.sh                # 构建脚本
+├── deploy.sh               # 发布脚本
+├── .dockerignore           # Docker 忽略文件
+├── next.config.js          # Next.js 配置
+├── package.json
+├── src/
+│   ├── app/               # Next.js App Router
+│   ├── components/        # React 组件
+│   ├── store/             # Zustand 状态管理
+│   ├── types/             # TypeScript 类型
+│   └── utils/             # 工具函数
+└── README.md
+```
+
+## 🧠 心理学理论基础
+
+- **Elimination by Aspects (Tversky, 1972)**: 非补偿性两阶段决策模型
+- **Negativity Bias (Baumeister et al., 2001)**: 拒绝反馈权重惩罚机制
+- **Information Foraging Theory (Pirolli & Card, 1999)**: 三卡斑块推荐策略
+- **Affective Forecasting (Wilson & Gilbert, 2003)**: 情绪一致性食物偏好
+
+## 📝 License
 
 MIT

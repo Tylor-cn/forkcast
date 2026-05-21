@@ -4,17 +4,20 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Star, Heart, RefreshCw, Check, Ban } from 'lucide-react'
 import { useAppStore } from '@/store/useAppStore'
-import { Dish, PREDEFINED_TAGS } from '@/types'
+import { Dish, PREDEFINED_TAGS, Tag } from '@/types'
 import ExcludeTagModal from './ExcludeTagModal'
 import ForagingPrompt from './ForagingPrompt'
 
-// 备选按钮组件
-function BackupButton() {
+function BackupButton({ externalTrigger = 0 }: { externalTrigger?: number }) {
   const { backupList, dishes, removeFromBackup, pickFromBackup } = useAppStore()
   const [showBackup, setShowBackup] = useState(false)
-  
+
+  useEffect(() => {
+    if (externalTrigger > 0) setShowBackup(true)
+  }, [externalTrigger])
+
   const backupDishes = backupList.map(b => dishes.find(d => d.id === b.dishId)).filter(Boolean) as Dish[]
-  
+
   return (
     <>
       <button
@@ -29,8 +32,7 @@ function BackupButton() {
           </span>
         )}
       </button>
-      
-      {/* 备选弹窗 */}
+
       <AnimatePresence>
         {showBackup && (
           <motion.div
@@ -53,7 +55,7 @@ function BackupButton() {
                   <X size={20} />
                 </button>
               </div>
-              
+
               <div className="p-4 overflow-y-auto max-h-[calc(70vh-80px)]">
                 {backupDishes.length === 0 ? (
                   <div className="text-center py-8 text-gray-500">
@@ -119,98 +121,86 @@ export function RecommendPage() {
     refreshRecommendation,
     startNewSession,
     getCurrentRecommendations,
-    rejectedInSession,
-    updateLastRecommendedIds,  // 新增：用于更新 lastRecommendedIds
+    updateLastRecommendedIds,
   } = useAppStore()
-  
+
   const [displayDishes, setDisplayDishes] = useState<Dish[]>([])
   const [isInitialized, setIsInitialized] = useState(false)
   const [showExcludeModal, setShowExcludeModal] = useState(false)
-  
-  // 初始化推荐
+  const [forceShowBackup, setForceShowBackup] = useState(0)
+  const resetPreferences = useAppStore(s => s.resetPreferences)
+
   useEffect(() => {
     if (dishes.length > 0 && !isInitialized) {
       const recommendations = getCurrentRecommendations().slice(0, 3)
       setDisplayDishes(recommendations)
-      updateLastRecommendedIds(recommendations.map(d => d.id))  // ✅ 在 useEffect 中更新，安全
+      updateLastRecommendedIds(recommendations.map(d => d.id))
       setIsInitialized(true)
     }
   }, [dishes, isInitialized, getCurrentRecommendations, updateLastRecommendedIds])
-  
-  // 监听refreshCount变化，刷新推荐
+
   useEffect(() => {
     if (refreshCount > 0) {
       const recommendations = getCurrentRecommendations().slice(0, 3)
       setDisplayDishes(recommendations)
-      updateLastRecommendedIds(recommendations.map(d => d.id))  // ✅ 在 useEffect 中更新，安全
+      updateLastRecommendedIds(recommendations.map(d => d.id))
     }
   }, [refreshCount, getCurrentRecommendations, updateLastRecommendedIds])
-  
-  // 监听hasCompletedPick变化，重置显示
+
   useEffect(() => {
     if (!hasCompletedPick && isInitialized) {
       const recommendations = getCurrentRecommendations().slice(0, 3)
       setDisplayDishes(recommendations)
-      updateLastRecommendedIds(recommendations.map(d => d.id))  // ✅ 在 useEffect 中更新，安全
+      updateLastRecommendedIds(recommendations.map(d => d.id))
     }
   }, [hasCompletedPick, isInitialized, getCurrentRecommendations, updateLastRecommendedIds])
-  
-  // 获取下一个推荐（不在当前显示列表中的）
-  const getNextRecommendation = (): Dish | undefined => {
-    const allRecommendations = getCurrentRecommendations()
+
+  const getNextDish = (excludeId: string): Dish | undefined => {
+    const store = useAppStore.getState()
+    const allRecommendations = store.getCurrentRecommendations()
     const currentIds = new Set(displayDishes.map(d => d.id))
     return allRecommendations.find(d => !currentIds.has(d.id))
   }
-  
+
   const handleReject = (dishId: string) => {
     handleFeedback(dishId, 'reject')
-    // 只替换这一张卡片
-    setTimeout(() => {
-      const nextDish = getNextRecommendation()
-      if (nextDish) {
-        setDisplayDishes(prev => prev.map(d => d.id === dishId ? nextDish : d))
-      } else {
-        setDisplayDishes(prev => prev.filter(d => d.id !== dishId))
-      }
-    }, 300)
+    const nextDish = getNextDish(dishId)
+    if (nextDish) {
+      setDisplayDishes(prev => prev.map(d => d.id === dishId ? nextDish : d))
+    } else {
+      setDisplayDishes(prev => prev.filter(d => d.id !== dishId))
+    }
   }
-  
+
   const handleBackup = (dishId: string) => {
     handleFeedback(dishId, 'backup')
-    // 只替换这一张卡片
-    setTimeout(() => {
-      const nextDish = getNextRecommendation()
-      if (nextDish) {
-        setDisplayDishes(prev => prev.map(d => d.id === dishId ? nextDish : d))
-      } else {
-        setDisplayDishes(prev => prev.filter(d => d.id !== dishId))
-      }
-    }, 300)
+    const nextDish = getNextDish(dishId)
+    if (nextDish) {
+      setDisplayDishes(prev => prev.map(d => d.id === dishId ? nextDish : d))
+    } else {
+      setDisplayDishes(prev => prev.filter(d => d.id !== dishId))
+    }
   }
-  
+
   const handlePick = (dishId: string) => {
     handleFeedback(dishId, 'pick')
   }
-  
+
   const handleRefresh = () => {
-    // 把当前显示的 3 个都标记为 reject
     displayDishes.forEach(dish => {
       handleFeedback(dish.id, 'reject')
     })
-    // 然后刷新推荐
     refreshRecommendation()
   }
-  
+
   const handlePickAgain = () => {
     startNewSession()
     setIsInitialized(false)
     setDisplayDishes([])
   }
-  
-  // 获取当前推荐的 3 个菜品
+
   const recommendations = displayDishes.length > 0 ? displayDishes : (dishes.length > 0 ? getCurrentRecommendations().slice(0, 3) : [])
-  
-  // 空状态
+
   if (dishes.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center h-full px-6 text-center">
@@ -225,8 +215,7 @@ export function RecommendPage() {
       </div>
     )
   }
-  
-  // 选择完成状态
+
   if (hasCompletedPick && lastPickedDish) {
     return (
       <div className="flex flex-col items-center justify-center h-full px-6">
@@ -238,7 +227,7 @@ export function RecommendPage() {
         >
           <Check className="text-green-500" size={48} />
         </motion.div>
-        
+
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -247,7 +236,7 @@ export function RecommendPage() {
         >
           今天中午吃
         </motion.h2>
-        
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -256,7 +245,7 @@ export function RecommendPage() {
         >
           {lastPickedDish.name}
         </motion.p>
-        
+
         <motion.button
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -269,18 +258,16 @@ export function RecommendPage() {
       </div>
     )
   }
-  
+
   return (
     <div className="flex flex-col h-full">
-      {/* 标题 */}
       <div className="text-center pt-6 pb-2">
         <h1 className="text-2xl font-bold text-gray-900">今天到底想吃啥？</h1>
         <p className="text-gray-500 text-sm mt-1">
           点击卡片选择，点击 ⭐ 备选
         </p>
       </div>
-      
-      {/* 排除标签按钮 */}
+
       <div className="flex justify-center gap-3 mb-2">
         <button
           onClick={() => setShowExcludeModal(true)}
@@ -290,8 +277,7 @@ export function RecommendPage() {
           不想吃
         </button>
       </div>
-      
-      {/* 三卡片区域 */}
+
       <div className="flex-1 flex items-center justify-center px-4 py-4">
         <AnimatePresence mode="popLayout">
           {recommendations.length > 0 ? (
@@ -328,8 +314,7 @@ export function RecommendPage() {
           )}
         </AnimatePresence>
       </div>
-      
-      {/* 换一批按钮 + 备选入口 */}
+
       {recommendations.length > 0 && (
         <div className="flex flex-col items-center gap-3 pb-20">
           <div className="flex items-center gap-3">
@@ -340,84 +325,95 @@ export function RecommendPage() {
               <RefreshCw size={18} />
               换一批
             </button>
-            
-            <BackupButton />
+
+            <BackupButton externalTrigger={forceShowBackup} />
           </div>
         </div>
       )}
-      
-      {/* 连续换批提示 */}
-      {refreshCount >= 10 && (
+
+      {consecutiveRejects >= 5 && (
         <div className="fixed bottom-20 left-0 right-0 flex justify-center">
           <div className="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-sm">
             要不要试试备选列表？
           </div>
         </div>
       )}
-      
-      {/* 排除标签模态框 */}
+
       {showExcludeModal && (
-        <ExcludeTagModal onClose={() => setShowExcludeModal(false)} />
+        <ExcludeTagModal
+          onClose={() => setShowExcludeModal(false)}
+          onExclusionChange={() => {
+            const recommendations = getCurrentRecommendations().slice(0, 3)
+            setDisplayDishes(recommendations)
+            updateLastRecommendedIds(recommendations.map(d => d.id))
+          }}
+        />
       )}
-      
-      {/* Information Foraging 提示 */}
-      <ForagingPrompt onSuggestChange={handleRefresh} />
+
+      <ForagingPrompt
+        onSuggestChange={handleRefresh}
+        onOpenExclude={() => setShowExcludeModal(true)}
+        onOpenBackup={() => setForceShowBackup(prev => prev + 1)}
+        onResetPreferences={() => {
+          resetPreferences()
+          startNewSession()
+          setIsInitialized(false)
+          setDisplayDishes([])
+        }}
+      />
     </div>
   )
 }
 
-// 单个卡片组件（3卡片布局）
 function DishCard3({ dish, index, onBackup, onPick }: {
   dish: Dish
   index: number
   onBackup: () => void
   onPick: () => void
 }) {
-  // 获取主要标签 - 显示更多标签
   const getDisplayTags = () => {
-    const tags = []
-    // 菜系
+    const tags: Tag[] = []
+
     const cuisineTag = PREDEFINED_TAGS.find(t => t.id === dish.tags.find(tag => tag.startsWith('cuisine-')))
     if (cuisineTag) tags.push(cuisineTag)
-    // 口味（最多2个）
+
     const tasteTags = dish.tags
       .filter(tag => tag.startsWith('taste-'))
       .slice(0, 2)
       .map(tag => PREDEFINED_TAGS.find(t => t.id === tag))
-      .filter(Boolean)
+      .filter(Boolean) as Tag[]
     tags.push(...tasteTags)
-    // 价格
+
     const priceTag = PREDEFINED_TAGS.find(t => t.id === dish.tags.find(tag => tag.startsWith('price-')))
     if (priceTag) tags.push(priceTag)
-    // 类型
+
     const typeTag = PREDEFINED_TAGS.find(t => t.id === dish.tags.find(tag => tag.startsWith('type-')))
     if (typeTag && tags.length < 5) tags.push(typeTag)
-    
-    return tags.slice(0, 5) // 最多显示5个标签
+
+    return tags.slice(0, 5)
   }
-  
+
   const displayTags = getDisplayTags()
-  
+
   return (
     <motion.div
       layout
       initial={{ opacity: 0, y: 50, scale: 0.8 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: -50, scale: 0.8 }}
-      transition={{ 
-        type: 'spring', 
-        stiffness: 300, 
+      transition={{
+        type: 'spring',
+        stiffness: 300,
         damping: 25,
-        delay: index * 0.05 
+        delay: index * 0.05
       }}
       className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col cursor-pointer hover:shadow-xl transition-shadow"
       onClick={onPick}
     >
-      {/* 菜品图片 */}
       <div className="h-24 bg-gradient-to-br from-orange-100 to-yellow-100 flex items-center justify-center relative">
         {dish.imageUrl ? (
-          <img 
-            src={dish.imageUrl} 
+          <img
+            src={dish.imageUrl}
             alt={dish.name}
             className="w-full h-full object-cover"
           />
@@ -425,29 +421,26 @@ function DishCard3({ dish, index, onBackup, onPick }: {
           <span className="text-4xl">🍽️</span>
         )}
       </div>
-      
-      {/* 菜品名称 */}
+
       <div className="p-2 flex-1">
         <h3 className="text-sm font-bold text-gray-900 text-center line-clamp-2">
           {dish.name}
         </h3>
-        
-        {/* Tags */}
+
         {displayTags.length > 0 && (
           <div className="flex flex-wrap gap-1 justify-center mt-1">
             {displayTags.map(tag => (
               <span
-                key={tag!.id}
+                key={tag.id}
                 className="px-1.5 py-0.5 rounded text-xs bg-gray-100 text-gray-600"
               >
-                {tag!.name}
+                {tag.name}
               </span>
             ))}
           </div>
         )}
       </div>
-      
-      {/* 操作按钮 - 只保留备选按钮 */}
+
       <div className="flex justify-center p-2 pt-0">
         <button
           onClick={(e) => {

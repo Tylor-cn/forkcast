@@ -14,14 +14,14 @@ export function BottomNav({ currentPage, onPageChange }: BottomNavProps) {
     { id: 'collection', label: '收藏', icon: Heart },
     { id: 'settings', label: '设置', icon: Settings },
   ]
-  
+
   return (
     <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 bottom-nav">
       <div className="max-w-lg mx-auto flex justify-around py-2">
         {navItems.map(item => {
           const Icon = item.icon
           const isActive = currentPage === item.id
-          
+
           return (
             <button
               key={item.id}
