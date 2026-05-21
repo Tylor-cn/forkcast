@@ -6,6 +6,8 @@ services:
       context: .
       dockerfile: Dockerfile
       target: runner
+      args:
+        IMAGE_REGISTRY: docker.m.daocloud.io
     image: forkcast:latest
     container_name: forkcast-app
     ports:

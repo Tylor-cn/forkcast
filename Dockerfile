@@ -1,17 +1,23 @@
 # 多阶段构建：Next.js 16 + TypeScript 应用
+# 使用国内镜像源（DaoCloud），避免 Docker Hub 拉取超时
+ARG IMAGE_REGISTRY=docker.m.daocloud.io
+
 # 阶段1：依赖安装（包含 devDependencies，因为构建需要）
-FROM node:22-alpine AS deps
+FROM ${IMAGE_REGISTRY}/library/node:22-alpine AS deps
 WORKDIR /app
 
 # 安装构建依赖（某些原生模块需要）
 RUN apk add --no-cache libc6-compat
 
 # 先复制包管理文件，利用 Docker 缓存层
+# 使用国内 npm 镜像加速
 COPY package.json package-lock.json* ./
-RUN npm ci && npm cache clean --force
+RUN npm config set registry https://registry.npmmirror.com && \
+    npm ci && npm cache clean --force
 
 # 阶段2：构建
-FROM node:22-alpine AS builder
+ARG IMAGE_REGISTRY=docker.m.daocloud.io
+FROM ${IMAGE_REGISTRY}/library/node:22-alpine AS builder
 WORKDIR /app
 
 # 复制依赖
@@ -24,7 +30,8 @@ ENV NODE_ENV=production
 RUN npm run build
 
 # 阶段3：运行（只复制生产需要的文件）
-FROM node:22-alpine AS runner
+ARG IMAGE_REGISTRY=docker.m.daocloud.io
+FROM ${IMAGE_REGISTRY}/library/node:22-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
