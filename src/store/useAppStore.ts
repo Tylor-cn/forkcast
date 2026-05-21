@@ -13,6 +13,7 @@ import {
   PREDEFINED_TAGS,
   TAG_ASSOCIATIONS,
 } from '@/types'
+import { DEMO_DISHES } from '@/utils/demoData'
 
 interface AppStore {
   dishes: Dish[]
@@ -628,12 +629,14 @@ export const useAppStore = create<AppStore>()(
         if (Array.isArray(state.shownInSession)) {
           state.shownInSession = {}
         }
-        if (state.dishes) {
+        if (state.dishes && state.dishes.length > 0) {
           state.dishes.forEach(d => {
             if (d.stats && !('lastPickTimestamp' in d.stats)) {
               d.stats.lastPickTimestamp = undefined
             }
           })
+        } else if (state.dishes && state.dishes.length === 0) {
+          state.dishes = DEMO_DISHES
         }
       },
     }
