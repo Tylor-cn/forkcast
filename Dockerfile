@@ -1,5 +1,5 @@
 # 多阶段构建：Next.js 16 + TypeScript 应用
-# 阶段1：依赖安装
+# 阶段1：依赖安装（包含 devDependencies，因为构建需要）
 FROM node:22-alpine AS deps
 WORKDIR /app
 
@@ -8,7 +8,7 @@ RUN apk add --no-cache libc6-compat
 
 # 先复制包管理文件，利用 Docker 缓存层
 COPY package.json package-lock.json* ./
-RUN npm ci --only=production && npm cache clean --force
+RUN npm ci && npm cache clean --force
 
 # 阶段2：构建
 FROM node:22-alpine AS builder
@@ -23,7 +23,7 @@ ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
 RUN npm run build
 
-# 阶段3：运行
+# 阶段3：运行（只复制生产需要的文件）
 FROM node:22-alpine AS runner
 WORKDIR /app
 
@@ -36,8 +36,7 @@ ENV HOSTNAME="0.0.0.0"
 RUN addgroup --system --gid 1001 nodejs && \
     adduser --system --uid 1001 nextjs
 
-# 复制必要文件
-COPY --from=builder /app/public ./public
+# 复制必要文件（public 目录可选）
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
