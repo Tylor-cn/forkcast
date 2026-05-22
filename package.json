@@ -2,7 +2,6 @@
   "name": "forkcast",
   "version": "1.0.0",
   "description": "今天到底想吃啥？基于心理学的动态推荐系统",
-  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
