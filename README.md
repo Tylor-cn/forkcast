@@ -1,22 +1,94 @@
-# Forkcast - 今天到底想吃啥？
+<div align="center">
 
-> 基于认知心理学的智能餐饮推荐系统
+# 🍽️ Forkcast
+
+### 今天到底想吃啥？
+
+**基于认知心理学的智能餐饮决策系统，拯救每一个中午点外卖的选择困难症患者。**
+
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss)](https://tailwindcss.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+[English](./README_EN.md) · [快速开始](#-快速开始) · [功能特性](#-功能特性) · [心理学基础](#-心理学基础)
+
+</div>
+
+---
+
+## 📖 项目简介
+
+> 每天中午，外卖 App 打开又关上，翻了 20 分钟菜单还是不知道吃什么——你不是不饿，你只是不认识自己的胃。
+
+**Forkcast** 不是又一个美食推荐 App。它用认知心理学帮你「排除」而非「挑选」，通过你的每一次拒绝、犹豫和心动，快速锁定你真正想吃的那一口。
+
+给每天中午的打工牛马，一个认识自己的机会。🐂🐴
+
+### 核心理念
+
+- 🧠 **不问你想吃什么，而是帮你发现你想吃什么** — 用排除法比选择法更快触达答案
+- 🎯 **越拒绝越精准** — 每次说「不」都在缩小范围，3-5 轮即可锁定目标
+- 📊 **长期学习你的口味** — 记住你的偏好模式，越用越懂你
+
+---
+
+## ✨ 功能特性
+
+| 功能 | 描述 |
+|:---|:---|
+| 🃏 三卡推荐 | 每次展示 3 道菜，科学的信息觅食策略 |
+| 👎 排除式决策 | 不喜欢就划掉，系统自动调整权重 |
+| 📋 备选清单 | 「有点想吃」的先存着，最后再选 |
+| 🏷️ 8 维标签系统 | 菜系/口味/价格/时段等全方位标注 |
+| 🌡️ 上下文感知 | 根据时段和季节自动调整推荐 |
+| 📈 双模式学习 | 短期会话偏好 + 长期历史趋势 |
+| 📱 移动优先 | 专为手机点外卖场景设计 |
+| 🗂️ 菜品管理 | 支持手动添加、CSV 批量导入 |
+
+---
+
+## 🧠 心理学基础
+
+本项目的推荐算法基于以下经过同行评审的认知心理学理论：
+
+| 理论 | 应用 |
+|:---|:---|
+| **Elimination by Aspects** (Tversky, 1972) | 非补偿性两阶段决策模型——先排除再精选 |
+| **Negativity Bias** (Baumeister et al., 2001) | 拒绝反馈权重加倍惩罚，快速收敛 |
+| **Information Foraging** (Pirolli & Card, 1999) | 三卡斑块策略最大化信息密度 |
+| **Affective Forecasting** (Wilson & Gilbert, 2003) | 情绪/时间/季节的一致性偏好建模 |
+
+---
 
 ## 🚀 快速开始
+
+### 环境要求
+
+- Node.js >= 18
+- npm or yarn
 
 ### 本地开发
 
 ```bash
+# 克隆仓库
+git clone https://github.com/your-username/forkcast.git
+cd forkcast
+
+# 安装依赖
 npm install
+
+# 启动开发服务器
 npm run dev
 ```
 
-打开 [http://localhost:3000](http://localhost:3000) 即可使用。
+打开 [http://localhost:3000](http://localhost:3000) 开始使用。
 
-### Docker 部署
+### 🐳 Docker 部署
 
 ```bash
-# 构建并启动
+# 一键启动
 docker compose up -d
 
 # 查看日志
@@ -26,56 +98,90 @@ docker compose logs -f
 docker compose down
 ```
 
-### 一键发布
+---
 
-```bash
-# 发布到 Gitee（默认标签: latest）
-./deploy.sh
-
-# 指定版本标签
-./deploy.sh v1.0.0
-
-# 指定版本和提交信息
-./deploy.sh v1.0.0 "feat: 新增推荐算法"
-```
-
-## 🐳 Docker 构建
-
-```bash
-# 手动构建
-./build.sh
-
-# 构建指定版本
-./build.sh v1.0.0
-```
-
-## 📦 项目结构
+## 🏗️ 技术架构
 
 ```
-.
-├── Dockerfile              # Docker 镜像定义
-├── docker-compose.yml      # Docker Compose 配置
-├── build.sh                # 构建脚本
-├── deploy.sh               # 发布脚本
-├── .dockerignore           # Docker 忽略文件
-├── next.config.js          # Next.js 配置
-├── package.json
+┌─────────────────────────────────────────────┐
+│                  Frontend                     │
+├─────────────────────────────────────────────┤
+│  Next.js 16 (App Router)                     │
+│  React 19 + TypeScript                       │
+│  Tailwind CSS 4 + Framer Motion              │
+│  Zustand (State + LocalStorage Persist)      │
+├─────────────────────────────────────────────┤
+│              推荐引擎 Engine                  │
+├─────────────────────────────────────────────┤
+│  标签权重评分 + 多样性算法                     │
+│  时间衰减 + 上下文加成                         │
+│  非对称反馈 (拒绝惩罚 >> 选择奖励)             │
+│  三槽策略 (安全/熟悉/新奇)                     │
+├─────────────────────────────────────────────┤
+│              Deployment                       │
+├─────────────────────────────────────────────┤
+│  Docker Multi-stage Build (Alpine)           │
+│  Docker Compose                              │
+└─────────────────────────────────────────────┘
+```
+
+---
+
+## 📁 项目结构
+
+```
+forkcast/
 ├── src/
-│   ├── app/               # Next.js App Router
-│   ├── components/        # React 组件
-│   ├── store/             # Zustand 状态管理
-│   ├── types/             # TypeScript 类型
-│   └── utils/             # 工具函数
-└── README.md
+│   ├── app/                 # Next.js App Router 页面
+│   ├── components/          # React 组件
+│   │   ├── RecommendPage    # 🃏 核心推荐页
+│   │   ├── MenuPage         # 🗂️ 菜品管理
+│   │   ├── CollectionPage   # ⭐ 收藏页
+│   │   ├── SettingsPage     # ⚙️ 设置页
+│   │   └── ForagingPrompt   # 💡 觅食提示
+│   ├── store/               # Zustand 状态管理
+│   │   ├── slices/          # 状态切片 (dish/feedback/recommend/session/backup)
+│   │   ├── constants.ts     # 算法参数
+│   │   └── utils.ts         # 权重计算工具
+│   ├── types/               # TypeScript 类型定义 + 预设标签数据
+│   └── utils/               # 工具函数 + 100 道预置菜品
+├── Dockerfile               # 多阶段构建
+├── docker-compose.yml       # 容器编排
+└── package.json
 ```
 
-## 🧠 心理学理论基础
+---
 
-- **Elimination by Aspects (Tversky, 1972)**: 非补偿性两阶段决策模型
-- **Negativity Bias (Baumeister et al., 2001)**: 拒绝反馈权重惩罚机制
-- **Information Foraging Theory (Pirolli & Card, 1999)**: 三卡斑块推荐策略
-- **Affective Forecasting (Wilson & Gilbert, 2003)**: 情绪一致性食物偏好
+## 🤝 贡献
 
-## 📝 License
+欢迎贡献！无论是新菜品数据、算法优化还是 UI 改进。
 
-MIT
+```bash
+# Fork & Clone
+git clone https://github.com/your-username/forkcast.git
+
+# 创建特性分支
+git checkout -b feature/amazing-feature
+
+# 提交更改
+git commit -m "feat: add amazing feature"
+
+# 推送并创建 PR
+git push origin feature/amazing-feature
+```
+
+---
+
+## 📄 License
+
+[MIT](LICENSE) © Forkcast
+
+---
+
+<div align="center">
+
+**如果这个项目帮你节省了哪怕 1 分钟的纠结时间，请给个 ⭐**
+
+Made with ❤️ for every indecisive office worker
+
+</div>
