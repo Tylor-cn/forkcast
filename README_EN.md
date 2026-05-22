@@ -2,9 +2,9 @@
 
 # 🍽️ Forkcast
 
-### What Should I Eat Today?
+### What the hell should I eat today?
 
-**A psychology-powered food decision engine for indecisive lunch orderers.**
+**A cognitive psychology-powered food decision algorithm, saving every indecisive lunch orderer from menu paralysis.**
 
 [![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)](https://reactjs.org/)
@@ -20,16 +20,18 @@
 
 ## 📖 Introduction
 
-> Every lunch break, you open the delivery app, scroll for 20 minutes, and still can't decide. You're not lacking appetite — you just don't know your own taste.
+> Every day — morning, noon, and night — you open the delivery app, scroll for 20 minutes, and close it again. You're not lacking appetite — you just don't know what you actually want (duh!).
+>
+> Of course, if you don't have this problem, you're simply not my target user. 😏
 
-**Forkcast** isn't another food recommendation app. It uses cognitive psychology to help you *eliminate* rather than *choose* — through every rejection, hesitation, and spark of interest, it quickly narrows down to what you actually crave.
+**Forkcast** isn't another food recommendation app. It uses cognitive psychology to help you *eliminate* rather than *choose*. Through every rejection, hesitation, and spark of interest, it quickly locks in what you truly crave.
 
-A chance for every overworked office warrior to finally understand their own stomach. 🐂🐴
+A chance for every overworked office drone to rediscover their own stomach.
 
 ### Core Philosophy
 
-- 🧠 **Doesn't ask what you want — helps you discover it** — elimination beats selection
-- 🎯 **More rejections = more precision** — every "no" narrows the field; 3-5 rounds to target
+- 🧠 **Doesn't ask what you want — helps you discover it** — elimination beats selection every time
+- 🎯 **The more you reject, the more precise it gets** — every "no" narrows the field; 3-5 rounds to target
 - 📊 **Learns your taste over time** — remembers preference patterns, gets smarter with use
 
 ---
@@ -38,28 +40,28 @@ A chance for every overworked office warrior to finally understand their own sto
 
 | Feature | Description |
 |:---|:---|
-| 🃏 Three-Card Patch | Shows 3 dishes at a time — optimal foraging strategy |
-| 👎 Elimination-Based | Swipe away what you don't want; system adapts |
-| 📋 Backup List | Save "maybes" and revisit later |
-| 🏷️ 8-Dimension Tags | Cuisine, flavor, price, time, season & more |
+| 🃏 Three-Card Recommendation | Shows 3 dishes at a time — scientifically optimal information foraging |
+| 👎 Elimination-Based Decision | Swipe away what you don't want; the system auto-adjusts weights |
+| 📋 Backup List | Save "maybes" for later; make final pick from shortlist |
+| 🏷️ 8-Dimension Tag System | Cuisine / flavor / price / time / season & more |
 | 🌡️ Context-Aware | Adapts recommendations by time-of-day & season |
-| 📈 Dual Learning | Session-based + historical preference learning |
-| 📱 Mobile-First | Designed for ordering on your phone |
+| 📈 Dual-Mode Learning | Session-based preferences + long-term historical trends |
+| 📱 Mobile-First | Designed specifically for ordering on your phone |
 | 🗂️ Dish Management | Manual add or bulk CSV import |
-| 🍜 530 Pre-loaded Dishes | Covers 17 cuisines, ready out-of-the-box |
+| 🍜 530 Pre-loaded Dishes | Covers 17 cuisines, ready out-of-the-box (randomly generated~hehe~) |
 
 ---
 
 ## 🧠 Psychological Foundations
 
-The recommendation engine is grounded in peer-reviewed cognitive psychology:
+The recommendation algorithm is grounded in peer-reviewed cognitive psychology:
 
 | Theory | Application |
 |:---|:---|
-| **Elimination by Aspects** (Tversky, 1972) | Non-compensatory two-stage model: eliminate then refine |
-| **Negativity Bias** (Baumeister et al., 2001) | Rejections carry heavier penalty for faster convergence |
-| **Information Foraging** (Pirolli & Card, 1999) | Three-card patch maximizes information scent |
-| **Affective Forecasting** (Wilson & Gilbert, 2003) | Mood, time & seasonal consistency in preference |
+| **Elimination by Aspects** (Tversky, 1972) | Non-compensatory two-stage decision model — eliminate then refine |
+| **Negativity Bias** (Baumeister et al., 2001) | Rejection feedback doubles penalty weight for faster convergence |
+| **Information Foraging** (Pirolli & Card, 1999) | Three-card patch strategy maximizes information density |
+| **Affective Forecasting** (Wilson & Gilbert, 2003) | Mood / time / seasonal consistency in preference modeling |
 
 ---
 
@@ -84,7 +86,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to start using.
+Open [http://localhost:3000](http://localhost:3000) to get started.
 
 ### 🐳 Docker Deployment
 
@@ -105,24 +107,24 @@ docker compose down
 
 ```
 ┌─────────────────────────────────────────────┐
-│                  Frontend                     │
+│                  Frontend                   │
 ├─────────────────────────────────────────────┤
-│  Next.js 16 (App Router)                     │
-│  React 19 + TypeScript                       │
-│  Tailwind CSS 4 + Framer Motion              │
-│  Zustand (State + LocalStorage Persist)      │
+│  Next.js 16 (App Router)                    │
+│  React 19 + TypeScript                      │
+│  Tailwind CSS 4 + Framer Motion             │
+│  Zustand (State + LocalStorage Persist)     │
 ├─────────────────────────────────────────────┤
-│            Recommendation Engine             │
+│           Recommendation Engine             │
 ├─────────────────────────────────────────────┤
-│  Tag Weight Scoring + Diversity Algorithm    │
-│  Time Decay + Context Bonuses                │
-│  Asymmetric Feedback (Reject >> Pick)        │
-│  Three-Slot Strategy (Safe/Familiar/Novel)   │
+│  Tag Weight Scoring + Diversity Algorithm   │
+│  Time Decay + Context Bonuses               │
+│  Asymmetric Feedback (Reject >> Pick)       │
+│  Three-Slot Strategy (Safe/Familiar/Novel)  │
 ├─────────────────────────────────────────────┤
-│              Deployment                       │
+│              Deployment                     │
 ├─────────────────────────────────────────────┤
-│  Docker Multi-stage Build (Alpine)           │
-│  Docker Compose                              │
+│  Docker Multi-stage Build (Alpine)          │
+│  Docker Compose                             │
 └─────────────────────────────────────────────┘
 ```
 
@@ -137,9 +139,9 @@ forkcast/
 │   ├── components/          # React components
 │   │   ├── RecommendPage    # 🃏 Core recommendation view
 │   │   ├── MenuPage         # 🗂️ Dish management
-│   │   ├── CollectionPage   # ⭐ Collection/favorites
+│   │   ├── CollectionPage   # ⭐ Favorites
 │   │   └── SettingsPage     # ⚙️ Settings
-│   ├── store/               # Zustand state (modular slices)
+│   ├── store/               # Zustand state management (modular)
 │   │   ├── slices/          # 5 state slices
 │   │   │   ├── dishSlice        # Dish CRUD
 │   │   │   ├── feedbackSlice    # Feedback weight adjustment
