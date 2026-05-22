@@ -78,7 +78,7 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/Tylor-cn/forkcast.git
+git clone https://gitee.com/tylor-yang/forkcast.git
 cd forkcast
 
 # 安装依赖
@@ -187,7 +187,7 @@ forkcast/
 
 ```bash
 # Fork & Clone
-git clone https://github.com/Tylor-cn/forkcast.git
+git clone https://gitee.com/tylor-yang/forkcast.git
 
 # 创建特性分支
 git checkout -b feature/amazing-feature

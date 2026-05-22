@@ -78,7 +78,7 @@ The recommendation algorithm is grounded in peer-reviewed cognitive psychology:
 
 ```bash
 # Clone the repo
-git clone https://github.com/Tylor-cn/forkcast.git
+git clone https://gitee.com/tylor-yang/forkcast.git
 cd forkcast
 
 # Install dependencies
@@ -187,7 +187,7 @@ Contributions welcome! Whether it's new dish data, algorithm improvements, or UI
 
 ```bash
 # Fork & Clone
-git clone https://github.com/Tylor-cn/forkcast.git
+git clone https://gitee.com/tylor-yang/forkcast.git
 
 # Create feature branch
 git checkout -b feature/amazing-feature
