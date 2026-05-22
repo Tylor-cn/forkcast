@@ -10,7 +10,6 @@ const HIGH_FREQUENCY_TAGS = [
   'taste-mala', 'taste-extra-spicy', 'taste-medium-spicy',
   'price-luxury', 'price-premium',
   'time-slow',
-  'status-high-calorie',
   'taste-heavy',
   'temp-cold',
   'cuisine-fastfood',

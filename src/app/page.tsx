@@ -14,7 +14,7 @@ export default function Home() {
   const [currentPage, setCurrentPage] = useState('home')
   const [isClient, setIsClient] = useState(false)
   const [showIntro, setShowIntro] = useState(false)
-  const { startNewSession, initialExcludedTags, dishes } = useAppStore()
+  const { startNewSession, dishes } = useAppStore()
 
   useEffect(() => {
     setIsClient(true)
