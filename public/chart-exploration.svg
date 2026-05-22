@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 280" font-family="system-ui, -apple-system, sans-serif">
+<style>.ax{stroke:#e0e0e0;stroke-width:1}.gl{stroke:#f0f0f0;stroke-width:.5}.lb{fill:#888;font-size:11px}.tt{fill:#333;font-size:16px;font-weight:bold}.st{fill:#999;font-size:11px}</style>
+<text x="30" y="26" class="tt">菜系空间探索进度</text>
+<text x="30" y="44" class="st">每轮"换一批"探索3个菜系 · 10轮覆盖17菜系 · 470道菜</text>
+<line x1="190" y1="230" x2="640" y2="230" class="gl"/>
+<text x="182" y="234" text-anchor="end" class="lb">0</text>
+<line x1="190" y1="196.47058823529412" x2="640" y2="196.47058823529412" class="gl"/>
+<text x="182" y="200.47058823529412" text-anchor="end" class="lb">3</text>
+<line x1="190" y1="162.94117647058823" x2="640" y2="162.94117647058823" class="gl"/>
+<text x="182" y="166.94117647058823" text-anchor="end" class="lb">6</text>
+<line x1="190" y1="129.41176470588235" x2="640" y2="129.41176470588235" class="gl"/>
+<text x="182" y="133.41176470588235" text-anchor="end" class="lb">9</text>
+<line x1="190" y1="95.88235294117646" x2="640" y2="95.88235294117646" class="gl"/>
+<text x="182" y="99.88235294117646" text-anchor="end" class="lb">12</text>
+<line x1="190" y1="62.35294117647058" x2="640" y2="62.35294117647058" class="gl"/>
+<text x="182" y="66.35294117647058" text-anchor="end" class="lb">15</text>
+<text x="190" y="248" text-anchor="middle" class="lb">初始</text>
+<text x="235" y="248" text-anchor="middle" class="lb">第1轮</text>
+<text x="280" y="248" text-anchor="middle" class="lb">第2轮</text>
+<text x="325" y="248" text-anchor="middle" class="lb">第3轮</text>
+<text x="370" y="248" text-anchor="middle" class="lb">第4轮</text>
+<text x="415" y="248" text-anchor="middle" class="lb">第5轮</text>
+<text x="460" y="248" text-anchor="middle" class="lb">第6轮</text>
+<text x="505" y="248" text-anchor="middle" class="lb">第7轮</text>
+<text x="550" y="248" text-anchor="middle" class="lb">第8轮</text>
+<text x="595" y="248" text-anchor="middle" class="lb">第9轮</text>
+<text x="640" y="248" text-anchor="middle" class="lb">第10轮</text>
+<path d="M 190 230L 190.0 230.0 L 235.0 196.5 L 280.0 162.9 L 325.0 129.4 L 370.0 95.9 L 415.0 62.4 L 460.0 51.2 L 505.0 40.0 L 550.0 40.0 L 595.0 40.0 L 640.0 40.0 L 640 230 Z" fill="#3498db" opacity="0.12"/>
+<circle cx="235.0" cy="196.5" r="5" fill="#3498db" stroke="white" stroke-width="2"/>
+<text x="235.0" y="186.47058823529412" text-anchor="middle" class="lb" fill="#3498db" font-weight="bold">3</text>
+<circle cx="280.0" cy="162.9" r="5" fill="#3498db" stroke="white" stroke-width="2"/>
+<text x="280.0" y="152.94117647058823" text-anchor="middle" class="lb" fill="#3498db" font-weight="bold">6</text>
+<line x1="235.0" y1="196.5" x2="280.0" y2="162.9" stroke="#3498db" stroke-width="3" stroke-linecap="round"/>
+<circle cx="325.0" cy="129.4" r="5" fill="#3498db" stroke="white" stroke-width="2"/>
+<text x="325.0" y="119.41176470588235" text-anchor="middle" class="lb" fill="#3498db" font-weight="bold">9</text>
+<line x1="280.0" y1="162.9" x2="325.0" y2="129.4" stroke="#3498db" stroke-width="3" stroke-linecap="round"/>
+<circle cx="370.0" cy="95.9" r="5" fill="#3498db" stroke="white" stroke-width="2"/>
+<text x="370.0" y="85.88235294117646" text-anchor="middle" class="lb" fill="#3498db" font-weight="bold">12</text>
+<line x1="325.0" y1="129.4" x2="370.0" y2="95.9" stroke="#3498db" stroke-width="3" stroke-linecap="round"/>
+<circle cx="415.0" cy="62.4" r="5" fill="#3498db" stroke="white" stroke-width="2"/>
+<text x="415.0" y="52.35294117647058" text-anchor="middle" class="lb" fill="#3498db" font-weight="bold">15</text>
+<line x1="370.0" y1="95.9" x2="415.0" y2="62.4" stroke="#3498db" stroke-width="3" stroke-linecap="round"/>
+<circle cx="460.0" cy="51.2" r="5" fill="#3498db" stroke="white" stroke-width="2"/>
+<text x="460.0" y="41.176470588235304" text-anchor="middle" class="lb" fill="#3498db" font-weight="bold">16</text>
+<line x1="415.0" y1="62.4" x2="460.0" y2="51.2" stroke="#3498db" stroke-width="3" stroke-linecap="round"/>
+<circle cx="505.0" cy="40.0" r="5" fill="#3498db" stroke="white" stroke-width="2"/>
+<text x="505.0" y="30" text-anchor="middle" class="lb" fill="#3498db" font-weight="bold">17</text>
+<line x1="460.0" y1="51.2" x2="505.0" y2="40.0" stroke="#3498db" stroke-width="3" stroke-linecap="round"/>
+<circle cx="550.0" cy="40.0" r="5" fill="#3498db" stroke="white" stroke-width="2"/>
+<text x="550.0" y="30" text-anchor="middle" class="lb" fill="#3498db" font-weight="bold">17</text>
+<line x1="505.0" y1="40.0" x2="550.0" y2="40.0" stroke="#3498db" stroke-width="3" stroke-linecap="round"/>
+<circle cx="595.0" cy="40.0" r="5" fill="#3498db" stroke="white" stroke-width="2"/>
+<text x="595.0" y="30" text-anchor="middle" class="lb" fill="#3498db" font-weight="bold">17</text>
+<line x1="550.0" y1="40.0" x2="595.0" y2="40.0" stroke="#3498db" stroke-width="3" stroke-linecap="round"/>
+<circle cx="640.0" cy="40.0" r="5" fill="#3498db" stroke="white" stroke-width="2"/>
+<text x="640.0" y="30" text-anchor="middle" class="lb" fill="#3498db" font-weight="bold">17</text>
+<line x1="595.0" y1="40.0" x2="640.0" y2="40.0" stroke="#3498db" stroke-width="3" stroke-linecap="round"/>
+<text x="335" y="121.41176470588235" class="st" fill="#3498db">3轮: 9菜系 (53%)</text>
+<text x="335" y="54.35294117647058" class="st" fill="#3498db">5轮: 15菜系 (88%)</text>
+<line x1="190" y1="40" x2="640" y2="40" stroke="#27ae60" stroke-width="1.5" stroke-dasharray="6,4"/>
+<text x="640" y="36" text-anchor="end" class="lb" fill="#27ae60">全17菜系</text>
+</svg>

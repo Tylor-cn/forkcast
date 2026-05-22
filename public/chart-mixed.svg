@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" font-family="system-ui, -apple-system, sans-serif">
+<style>.ax{stroke:#e0e0e0;stroke-width:1}.gl{stroke:#f0f0f0;stroke-width:.5}.lb{fill:#888;font-size:11px}.tt{fill:#333;font-size:16px;font-weight:bold}.st{fill:#999;font-size:11px}.ann{fill:#555;font-size:11px}</style>
+<text x="30" y="26" class="tt">混合操作场景：备选 + 选定 收敛曲线</text>
+<text x="30" y="44" class="st">R1-3 换一批 → R4 备选"家常菜" → R5 选定"家常菜" · 有正向反馈时权重上升</text>
+<line x1="100" y1="348.51851851851853" x2="600" y2="348.51851851851853" class="gl"/>
+<text x="92" y="352.51851851851853" text-anchor="end" class="lb">0.2</text>
+<line x1="100" y1="302.5925925925926" x2="600" y2="302.5925925925926" class="gl"/>
+<text x="92" y="306.5925925925926" text-anchor="end" class="lb">0.4</text>
+<line x1="100" y1="256.66666666666663" x2="600" y2="256.66666666666663" class="gl"/>
+<text x="92" y="260.66666666666663" text-anchor="end" class="lb">0.6</text>
+<line x1="100" y1="210.74074074074076" x2="600" y2="210.74074074074076" class="gl"/>
+<text x="92" y="214.74074074074076" text-anchor="end" class="lb">0.8</text>
+<line x1="100" y1="164.81481481481484" x2="600" y2="164.81481481481484" class="gl"/>
+<text x="92" y="168.81481481481484" text-anchor="end" class="lb">1.0</text>
+<line x1="100" y1="118.88888888888889" x2="600" y2="118.88888888888889" class="gl"/>
+<text x="92" y="122.88888888888889" text-anchor="end" class="lb">1.2</text>
+<line x1="100" y1="72.96296296296299" x2="600" y2="72.96296296296299" class="gl"/>
+<text x="92" y="76.96296296296299" text-anchor="end" class="lb">1.4</text>
+<line x1="100" y1="27.037037037037067" x2="600" y2="27.037037037037067" class="gl"/>
+<text x="92" y="31.037037037037067" text-anchor="end" class="lb">1.6</text>
+<text x="100" y="378" text-anchor="middle" class="lb">初始</text>
+<text x="200" y="378" text-anchor="middle" class="lb">第1轮 换一批</text>
+<text x="300" y="378" text-anchor="middle" class="lb">第2轮 换一批</text>
+<text x="400" y="378" text-anchor="middle" class="lb">第3轮 换一批</text>
+<text x="500" y="378" text-anchor="middle" class="lb">第4轮 备选家常菜</text>
+<text x="600" y="378" text-anchor="middle" class="lb">第5轮 选定家常菜</text>
+<line x1="100" y1="360" x2="600" y2="360" class="ax"/>
+<line x1="100" y1="164.81481481481484" x2="600" y2="164.81481481481484" stroke="#ccc" stroke-width="1" stroke-dasharray="6,4"/>
+<text x="600" y="160.81481481481484" text-anchor="end" class="st" fill="#bbb">1.0</text>
+<rect x="100" y="50" width="300" height="310" fill="#fff5f5" rx="4" opacity="0.5"/>
+<text x="250" y="64" text-anchor="middle" class="st" fill="#e74c3c">排除阶段</text>
+<rect x="400" y="50" width="200" height="310" fill="#f5fff5" rx="4" opacity="0.5"/>
+<text x="500" y="64" text-anchor="middle" class="st" fill="#27ae60">正向反馈</text>
+<polyline points="100.0 164.8 200.0 279.6 300.0 279.6 400.0 279.6 500.0 279.6 600.0 279.6" fill="none" stroke="#e74c3c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="100.0" cy="164.8" r="3" fill="#e74c3c" stroke="white" stroke-width="1.5"/>
+<circle cx="200.0" cy="279.6" r="3" fill="#e74c3c" stroke="white" stroke-width="1.5"/>
+<circle cx="300.0" cy="279.6" r="3" fill="#e74c3c" stroke="white" stroke-width="1.5"/>
+<circle cx="400.0" cy="279.6" r="3" fill="#e74c3c" stroke="white" stroke-width="1.5"/>
+<circle cx="500.0" cy="279.6" r="3" fill="#e74c3c" stroke="white" stroke-width="1.5"/>
+<circle cx="600.0" cy="279.6" r="3" fill="#e74c3c" stroke="white" stroke-width="1.5"/>
+<polyline points="100.0 164.8 200.0 292.0 300.0 292.0 400.0 292.0 500.0 292.0 600.0 292.0" fill="none" stroke="#2ecc71" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="100.0" cy="164.8" r="3" fill="#2ecc71" stroke="white" stroke-width="1.5"/>
+<circle cx="200.0" cy="292.0" r="3" fill="#2ecc71" stroke="white" stroke-width="1.5"/>
+<circle cx="300.0" cy="292.0" r="3" fill="#2ecc71" stroke="white" stroke-width="1.5"/>
+<circle cx="400.0" cy="292.0" r="3" fill="#2ecc71" stroke="white" stroke-width="1.5"/>
+<circle cx="500.0" cy="292.0" r="3" fill="#2ecc71" stroke="white" stroke-width="1.5"/>
+<circle cx="600.0" cy="292.0" r="3" fill="#2ecc71" stroke="white" stroke-width="1.5"/>
+<polyline points="100.0 164.8 200.0 164.8 300.0 164.8 400.0 164.8 500.0 130.4 600.0 51.1" fill="none" stroke="#f39c12" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="100.0" cy="164.8" r="5" fill="#f39c12" stroke="white" stroke-width="2"/>
+<circle cx="200.0" cy="164.8" r="5" fill="#f39c12" stroke="white" stroke-width="2"/>
+<circle cx="300.0" cy="164.8" r="5" fill="#f39c12" stroke="white" stroke-width="2"/>
+<circle cx="400.0" cy="164.8" r="5" fill="#f39c12" stroke="white" stroke-width="2"/>
+<circle cx="500.0" cy="130.4" r="5" fill="#f39c12" stroke="white" stroke-width="2"/>
+<circle cx="600.0" cy="51.1" r="5" fill="#f39c12" stroke="white" stroke-width="2"/>
+<polyline points="100.0 164.8 200.0 164.8 300.0 316.8 400.0 316.8 500.0 316.8 600.0 316.8" fill="none" stroke="#e67e22" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="100.0" cy="164.8" r="3" fill="#e67e22" stroke="white" stroke-width="1.5"/>
+<circle cx="200.0" cy="164.8" r="3" fill="#e67e22" stroke="white" stroke-width="1.5"/>
+<circle cx="300.0" cy="316.8" r="3" fill="#e67e22" stroke="white" stroke-width="1.5"/>
+<circle cx="400.0" cy="316.8" r="3" fill="#e67e22" stroke="white" stroke-width="1.5"/>
+<circle cx="500.0" cy="316.8" r="3" fill="#e67e22" stroke="white" stroke-width="1.5"/>
+<circle cx="600.0" cy="316.8" r="3" fill="#e67e22" stroke="white" stroke-width="1.5"/>
+<polyline points="100.0 164.8 200.0 164.8 300.0 309.9 400.0 309.9 500.0 309.9 600.0 309.9" fill="none" stroke="#9b59b6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="100.0" cy="164.8" r="3" fill="#9b59b6" stroke="white" stroke-width="1.5"/>
+<circle cx="200.0" cy="164.8" r="3" fill="#9b59b6" stroke="white" stroke-width="1.5"/>
+<circle cx="300.0" cy="309.9" r="3" fill="#9b59b6" stroke="white" stroke-width="1.5"/>
+<circle cx="400.0" cy="309.9" r="3" fill="#9b59b6" stroke="white" stroke-width="1.5"/>
+<circle cx="500.0" cy="309.9" r="3" fill="#9b59b6" stroke="white" stroke-width="1.5"/>
+<circle cx="600.0" cy="309.9" r="3" fill="#9b59b6" stroke="white" stroke-width="1.5"/>
+<polyline points="100.0 164.8 200.0 164.8 300.0 322.6 400.0 322.6 500.0 322.6 600.0 322.6" fill="none" stroke="#1abc9c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="100.0" cy="164.8" r="3" fill="#1abc9c" stroke="white" stroke-width="1.5"/>
+<circle cx="200.0" cy="164.8" r="3" fill="#1abc9c" stroke="white" stroke-width="1.5"/>
+<circle cx="300.0" cy="322.6" r="3" fill="#1abc9c" stroke="white" stroke-width="1.5"/>
+<circle cx="400.0" cy="322.6" r="3" fill="#1abc9c" stroke="white" stroke-width="1.5"/>
+<circle cx="500.0" cy="322.6" r="3" fill="#1abc9c" stroke="white" stroke-width="1.5"/>
+<circle cx="600.0" cy="322.6" r="3" fill="#1abc9c" stroke="white" stroke-width="1.5"/>
+<text x="200" y="152.81481481481484" text-anchor="middle" class="ann" fill="#f39c12" font-weight="bold">1.00</text>
+<text x="300" y="152.81481481481484" text-anchor="middle" class="ann" fill="#f39c12" font-weight="bold">1.00</text>
+<text x="400" y="152.81481481481484" text-anchor="middle" class="ann" fill="#f39c12" font-weight="bold">1.00</text>
+<text x="500" y="118.37037037037041" text-anchor="middle" class="ann" fill="#f39c12" font-weight="bold">↑1.15</text>
+<text x="600" y="39.14814814814815" text-anchor="middle" class="ann" fill="#f39c12" font-weight="bold">↑1.50</text>
+<line x1="605" y1="60" x2="625" y2="60" stroke="#e74c3c" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="615" cy="60" r="2.5" fill="#e74c3c" stroke="white" stroke-width="1"/>
+<text x="632" y="64" class="lb" fill="#555">川菜</text>
+<line x1="605" y1="82" x2="625" y2="82" stroke="#2ecc71" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="615" cy="82" r="2.5" fill="#2ecc71" stroke="white" stroke-width="1"/>
+<text x="632" y="86" class="lb" fill="#555">粤菜</text>
+<line x1="605" y1="104" x2="625" y2="104" stroke="#f39c12" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="615" cy="104" r="4" fill="#f39c12" stroke="white" stroke-width="1"/>
+<text x="632" y="108" class="lb" fill="#555">家常菜</text>
+<line x1="605" y1="126" x2="625" y2="126" stroke="#e67e22" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="615" cy="126" r="2.5" fill="#e67e22" stroke="white" stroke-width="1"/>
+<text x="632" y="130" class="lb" fill="#555">韩料</text>
+<line x1="605" y1="148" x2="625" y2="148" stroke="#9b59b6" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="615" cy="148" r="2.5" fill="#9b59b6" stroke="white" stroke-width="1"/>
+<text x="632" y="152" class="lb" fill="#555">湘菜</text>
+<line x1="605" y1="170" x2="625" y2="170" stroke="#1abc9c" stroke-width="1.5" stroke-linecap="round"/>
+<circle cx="615" cy="170" r="2.5" fill="#1abc9c" stroke="white" stroke-width="1"/>
+<text x="632" y="174" class="lb" fill="#555">西餐</text>
+<text x="510" y="112.37037037037041" class="st" fill="#f39c12">备选 boost ↑</text>
+<text x="590" y="33.14814814814815" text-anchor="end" class="st" fill="#f39c12">选定 boost ↑</text>
+</svg>

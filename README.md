@@ -12,7 +12,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
-[English](./README_EN.md) · [快速开始](#-快速开始) · [功能特性](#-功能特性) · [心理学基础](#-心理学基础)
+[English](./README_EN.md) · [快速开始](#-快速开始) · [功能特性](#-功能特性) · [心理学基础](#-心理学基础) · [算法设计](./ALGORITHM.md)
 
 </div>
 
@@ -63,43 +63,7 @@
 | **Information Foraging** (Pirolli & Card, 1999) | 三卡斑块策略最大化信息密度 |
 | **Affective Forecasting** (Wilson & Gilbert, 2003) | 情绪/时间/季节的一致性偏好建模 |
 
----
-
-## 🔬 算法设计验证
-
-### 信号体系
-
-三层非对称反馈信号，与认知心理学理论严格对齐：
-
-| 操作 | 信号强度 | 短期权重变化 | 含义 |
-|------|---------|-------------|------|
-| 换一批 | 负向信号 | ×0.35 → ×0.22 (连续递增) | "这 3 个方向不对" |
-| 备选 ⭐ | 弱正向信号 | ×1.2 | "可以考虑" |
-| 选定 ❤️ | 强正向信号 | ×1.5 | "就吃这个" |
-
-> 用户带着偏好来，系统通过排除式决策在 3~5 轮内快速收敛。纯浏览场景请使用菜单页。
-
-### 收敛性验证
-
-以 530 道菜品、中午 12 点初始状态追踪算法执行：
-
-```
-第 1 轮: 三槽策略确保 3 道菜来自 3 个不同菜系（如川、粤、日）
-   ↓ 换一批 → 3 个菜系分别被惩罚，但因多样性分散，单菜系不会归零
-第 2 轮: 川粤日权重降低 → 湘、韩、西餐等新菜系顶上
-   ↓ 换一批 → 又一维度偏好被标记
-第 3-5 轮: 约 15 个菜系方向被快速扫描
-   ↓
-收敛: 剩余高分推荐集中在与用户正向反馈一致的菜系和口味方向
-```
-
-### 关键设计自查
-
-- **不会出现同菜系扎堆** — 三槽策略（安全/熟悉/新奇）+ 菜系多样性权重 0.5
-- **换一批不会过度惩罚单菜系** — 每次 3 道菜分散在不同菜系，惩罚均匀分布
-- **连续拒绝升级方向正确** — 采用除法公式 `×0.35 / escalation`，连续拒绝惩罚递增
-- **`season-all` 标签有效** — 364 道四季菜在任意季节均可获得上下文加成
-- **排除优先级高于选择** — reject 惩罚力 (×0.22~0.35) 远大于 pick 奖励 (×1.5)
+> 对算法有兴趣的同学可以参阅这里： **[ALGORITHM.md](./ALGORITHM.md)**。
 
 ---
 
@@ -114,7 +78,7 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/your-username/forkcast.git
+git clone https://github.com/Tylor-cn/forkcast.git
 cd forkcast
 
 # 安装依赖
@@ -209,6 +173,7 @@ forkcast/
 │           ├── northwest.ts     # 西北菜 (15)
 │           ├── yunnan.ts        # 云贵菜 (12)
 │           └── other.ts         # 其他 (30)
+├── ALGORITHM.md             # 算法设计文档
 ├── Dockerfile               # 多阶段构建
 ├── docker-compose.yml       # 容器编排
 └── package.json
@@ -222,7 +187,7 @@ forkcast/
 
 ```bash
 # Fork & Clone
-git clone https://github.com/your-username/forkcast.git
+git clone https://github.com/Tylor-cn/forkcast.git
 
 # 创建特性分支
 git checkout -b feature/amazing-feature

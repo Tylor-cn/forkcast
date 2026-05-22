@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 260" font-family="system-ui, -apple-system, sans-serif">
+<style>.bl{fill:#555;font-size:12px}.bv{fill:#333;font-size:12px;font-weight:bold}.tt{fill:#333;font-size:16px;font-weight:bold}.st{fill:#999;font-size:11px}</style>
+<text x="30" y="24" class="tt">反馈信号强度对比</text>
+<text x="30" y="41" class="st">短期权重乘数 · 虚线 = 基准线 1.0 · 越短惩罚越强</text>
+<line x1="195" y1="146" x2="580" y2="146" stroke="#ccc" stroke-width="1" stroke-dasharray="6,4"/>
+<rect x="300.5" y="50" width="110.1" height="34" rx="6" fill="#e74c3c" opacity="0.85"/>
+<text x="183" y="71" text-anchor="end" class="bl">换一批 ×0.35 (初始)</text>
+<text x="292.5" y="71" text-anchor="end" class="bv" fill="#e74c3c">×0.35</text>
+<rect x="278.5" y="98" width="132.1" height="34" rx="6" fill="#c0392b" opacity="0.85"/>
+<text x="183" y="119" text-anchor="end" class="bl">换一批 ×0.22 (连续5次后)</text>
+<text x="270.5" y="119" text-anchor="end" class="bv" fill="#c0392b">×0.22</text>
+<rect x="410.6" y="146" width="33.9" height="34" rx="6" fill="#f39c12" opacity="0.85"/>
+<text x="183" y="167" text-anchor="end" class="bl">备选 ×1.20</text>
+<text x="452.5" y="167" text-anchor="start" class="bv" fill="#f39c12">×1.20</text>
+<rect x="410.6" y="194" width="84.7" height="34" rx="6" fill="#27ae60" opacity="0.85"/>
+<text x="183" y="215" text-anchor="end" class="bl">选定 ×1.50</text>
+<text x="503.3" y="215" text-anchor="start" class="bv" fill="#27ae60">×1.50</text>
+<text x="195" y="258" class="st" fill="#999">Negativity Bias: 拒绝惩罚力 (×0.22~0.35, 65-78%降权) 远大于选择奖励 (×1.50, 50%升权) — 排除优先级高于选择</text></svg>

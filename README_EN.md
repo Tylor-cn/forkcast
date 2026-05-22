@@ -12,7 +12,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
-[中文](./README.md) · [Quick Start](#-quick-start) · [Features](#-features) · [Psychology](#-psychological-foundations)
+[中文](./README.md) · [Quick Start](#-quick-start) · [Features](#-features) · [Psychology](#-psychological-foundations) · [Algorithm](./ALGORITHM.md)
 
 </div>
 
@@ -63,43 +63,7 @@ The recommendation algorithm is grounded in peer-reviewed cognitive psychology:
 | **Information Foraging** (Pirolli & Card, 1999) | Three-card patch strategy maximizes information density |
 | **Affective Forecasting** (Wilson & Gilbert, 2003) | Mood / time / seasonal consistency in preference modeling |
 
----
-
-## 🔬 Algorithm Verification
-
-### Signal Hierarchy
-
-Three-tier asymmetric feedback signals, aligned with cognitive psychology theory:
-
-| Action | Signal | Short-term Weight Δ | Meaning |
-|--------|--------|---------------------|---------|
-| Next Batch | Negative | ×0.35 → ×0.22 (escalating) | "None of these 3" |
-| Backup ⭐ | Weak Positive | ×1.2 | "Maybe" |
-| Pick ❤️ | Strong Positive | ×1.5 | "This one" |
-
-> Users arrive with preferences; the system converges in 3-5 rounds via elimination. For browsing, use the menu page.
-
-### Convergence Trace
-
-Algorithm execution traced with 530 dishes at 12:00 PM from a cold start:
-
-```
-Round 1: Three-slot strategy picks 3 different cuisines (e.g., Sichuan, Cantonese, Japanese)
-   ↓ Next Batch → all 3 cuisines penalized, but diversity prevents any single cuisine from tanking
-Round 2: Weights shift → Hunan, Korean, Western cuisines surface
-   ↓ Next Batch → another preference dimension marked
-Round 3-5: ~15 cuisine directions scanned
-   ↓
-Convergence: top recommendations cluster around cuisines and flavors with positive feedback
-```
-
-### Design Verification
-
-- **No cuisine clustering** — Three-slot strategy (safe/familiar/novel) + cuisine diversity weight 0.5
-- **No single-cuisine over-penalization** — 3 dishes spread across different cuisines, penalties evenly distributed
-- **Consecutive reject escalation fixed** — Division formula `×0.35 / escalation`, penalty increases with consecutive rejects
-- **`season-all` tag effective** — 364 all-season dishes receive context bonus year-round
-- **Elimination priority over selection** — Reject penalty (×0.22~0.35) far outweighs pick reward (×1.5), aligned with Negativity Bias
+> Curious about the algorithm? Check out: **[ALGORITHM.md](./ALGORITHM.md)**.
 
 ---
 
@@ -114,7 +78,7 @@ Convergence: top recommendations cluster around cuisines and flavors with positi
 
 ```bash
 # Clone the repo
-git clone https://github.com/your-username/forkcast.git
+git clone https://github.com/Tylor-cn/forkcast.git
 cd forkcast
 
 # Install dependencies
@@ -209,6 +173,7 @@ forkcast/
 │           ├── northwest.ts     # Northwest (15)
 │           ├── yunnan.ts        # Yunnan-Guizhou (12)
 │           └── other.ts         # Other (30)
+├── ALGORITHM.md             # Algorithm design doc
 ├── Dockerfile               # Multi-stage build
 ├── docker-compose.yml       # Container orchestration
 └── package.json
@@ -222,7 +187,7 @@ Contributions welcome! Whether it's new dish data, algorithm improvements, or UI
 
 ```bash
 # Fork & Clone
-git clone https://github.com/your-username/forkcast.git
+git clone https://github.com/Tylor-cn/forkcast.git
 
 # Create feature branch
 git checkout -b feature/amazing-feature

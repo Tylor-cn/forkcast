@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" font-family="system-ui, -apple-system, sans-serif">
+<style>.ax{stroke:#e0e0e0;stroke-width:1}.gl{stroke:#f0f0f0;stroke-width:.5}.lb{fill:#888;font-size:11px}.tt{fill:#333;font-size:16px;font-weight:bold}.st{fill:#999;font-size:11px}</style>
+<text x="30" y="26" class="tt">纯换一批场景：菜系权重收敛曲线</text>
+<text x="30" y="44" class="st">10轮全部"换一批" · 6大菜系 · 前5轮扫描，后5轮重复命中</text>
+<line x1="80" y1="312.22222222222223" x2="600" y2="312.22222222222223" class="gl"/>
+<text x="72" y="316.22222222222223" text-anchor="end" class="lb">0.2</text>
+<line x1="80" y1="246.66666666666666" x2="600" y2="246.66666666666666" class="gl"/>
+<text x="72" y="250.66666666666666" text-anchor="end" class="lb">0.4</text>
+<line x1="80" y1="181.11111111111106" x2="600" y2="181.11111111111106" class="gl"/>
+<text x="72" y="185.11111111111106" text-anchor="end" class="lb">0.6</text>
+<line x1="80" y1="115.55555555555554" x2="600" y2="115.55555555555554" class="gl"/>
+<text x="72" y="119.55555555555554" text-anchor="end" class="lb">0.8</text>
+<line x1="80" y1="50" x2="600" y2="50" class="gl"/>
+<text x="72" y="54" text-anchor="end" class="lb">1.0</text>
+<text x="80" y="363" text-anchor="middle" class="lb">初始</text>
+<text x="132" y="363" text-anchor="middle" class="lb">R1</text>
+<text x="184" y="363" text-anchor="middle" class="lb">R2</text>
+<text x="236" y="363" text-anchor="middle" class="lb">R3</text>
+<text x="288" y="363" text-anchor="middle" class="lb">R4</text>
+<text x="340" y="363" text-anchor="middle" class="lb">R5</text>
+<text x="392" y="363" text-anchor="middle" class="lb">R6</text>
+<text x="444" y="363" text-anchor="middle" class="lb">R7</text>
+<text x="496" y="363" text-anchor="middle" class="lb">R8</text>
+<text x="548" y="363" text-anchor="middle" class="lb">R9</text>
+<text x="600" y="363" text-anchor="middle" class="lb">R10</text>
+<line x1="80" y1="345" x2="600" y2="345" class="ax"/>
+<line x1="80" y1="312.22222222222223" x2="600" y2="312.22222222222223" stroke="#ddd" stroke-width="1" stroke-dasharray="4,4"/>
+<rect x="392" y="50" width="208" height="295" fill="#f0f8ff" rx="4"/>
+<text x="496" y="64" text-anchor="middle" class="st" fill="#3498db">重复命中区</text>
+<polyline points="80.0 50.0 132.0 213.9 184.0 213.9 236.0 213.9 288.0 213.9 340.0 213.9 392.0 312.2 444.0 312.2 496.0 312.2 548.0 312.2 600.0 312.2" fill="none" stroke="#e74c3c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="132.0" cy="213.9" r="3.5" fill="#e74c3c" stroke="white" stroke-width="1.5"/>
+<circle cx="184.0" cy="213.9" r="3.5" fill="#e74c3c" stroke="white" stroke-width="1.5"/>
+<circle cx="236.0" cy="213.9" r="3.5" fill="#e74c3c" stroke="white" stroke-width="1.5"/>
+<circle cx="288.0" cy="213.9" r="3.5" fill="#e74c3c" stroke="white" stroke-width="1.5"/>
+<circle cx="340.0" cy="213.9" r="3.5" fill="#e74c3c" stroke="white" stroke-width="1.5"/>
+<circle cx="392.0" cy="312.2" r="3.5" fill="#e74c3c" stroke="white" stroke-width="1.5"/>
+<circle cx="444.0" cy="312.2" r="3.5" fill="#e74c3c" stroke="white" stroke-width="1.5"/>
+<circle cx="496.0" cy="312.2" r="3.5" fill="#e74c3c" stroke="white" stroke-width="1.5"/>
+<circle cx="548.0" cy="312.2" r="3.5" fill="#e74c3c" stroke="white" stroke-width="1.5"/>
+<circle cx="600.0" cy="312.2" r="3.5" fill="#e74c3c" stroke="white" stroke-width="1.5"/>
+<polyline points="80.0 50.0 132.0 231.6 184.0 231.6 236.0 231.6 288.0 231.6 340.0 231.6 392.0 312.2 444.0 312.2 496.0 312.2 548.0 312.2 600.0 312.2" fill="none" stroke="#2ecc71" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="132.0" cy="231.6" r="3.5" fill="#2ecc71" stroke="white" stroke-width="1.5"/>
+<circle cx="184.0" cy="231.6" r="3.5" fill="#2ecc71" stroke="white" stroke-width="1.5"/>
+<circle cx="236.0" cy="231.6" r="3.5" fill="#2ecc71" stroke="white" stroke-width="1.5"/>
+<circle cx="288.0" cy="231.6" r="3.5" fill="#2ecc71" stroke="white" stroke-width="1.5"/>
+<circle cx="340.0" cy="231.6" r="3.5" fill="#2ecc71" stroke="white" stroke-width="1.5"/>
+<circle cx="392.0" cy="312.2" r="3.5" fill="#2ecc71" stroke="white" stroke-width="1.5"/>
+<circle cx="444.0" cy="312.2" r="3.5" fill="#2ecc71" stroke="white" stroke-width="1.5"/>
+<circle cx="496.0" cy="312.2" r="3.5" fill="#2ecc71" stroke="white" stroke-width="1.5"/>
+<circle cx="548.0" cy="312.2" r="3.5" fill="#2ecc71" stroke="white" stroke-width="1.5"/>
+<circle cx="600.0" cy="312.2" r="3.5" fill="#2ecc71" stroke="white" stroke-width="1.5"/>
+<polyline points="80.0 50.0 132.0 245.7 184.0 245.7 236.0 245.7 288.0 245.7 340.0 245.7 392.0 245.7 444.0 312.2 496.0 312.2 548.0 312.2 600.0 312.2" fill="none" stroke="#3498db" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="132.0" cy="245.7" r="3.5" fill="#3498db" stroke="white" stroke-width="1.5"/>
+<circle cx="184.0" cy="245.7" r="3.5" fill="#3498db" stroke="white" stroke-width="1.5"/>
+<circle cx="236.0" cy="245.7" r="3.5" fill="#3498db" stroke="white" stroke-width="1.5"/>
+<circle cx="288.0" cy="245.7" r="3.5" fill="#3498db" stroke="white" stroke-width="1.5"/>
+<circle cx="340.0" cy="245.7" r="3.5" fill="#3498db" stroke="white" stroke-width="1.5"/>
+<circle cx="392.0" cy="245.7" r="3.5" fill="#3498db" stroke="white" stroke-width="1.5"/>
+<circle cx="444.0" cy="312.2" r="3.5" fill="#3498db" stroke="white" stroke-width="1.5"/>
+<circle cx="496.0" cy="312.2" r="3.5" fill="#3498db" stroke="white" stroke-width="1.5"/>
+<circle cx="548.0" cy="312.2" r="3.5" fill="#3498db" stroke="white" stroke-width="1.5"/>
+<circle cx="600.0" cy="312.2" r="3.5" fill="#3498db" stroke="white" stroke-width="1.5"/>
+<polyline points="80.0 50.0 132.0 50.0 184.0 50.0 236.0 50.0 288.0 50.0 340.0 50.0 392.0 275.2 444.0 275.2 496.0 312.2 548.0 312.2 600.0 312.2" fill="none" stroke="#e67e22" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="392.0" cy="275.2" r="3.5" fill="#e67e22" stroke="white" stroke-width="1.5"/>
+<circle cx="444.0" cy="275.2" r="3.5" fill="#e67e22" stroke="white" stroke-width="1.5"/>
+<circle cx="496.0" cy="312.2" r="3.5" fill="#e67e22" stroke="white" stroke-width="1.5"/>
+<circle cx="548.0" cy="312.2" r="3.5" fill="#e67e22" stroke="white" stroke-width="1.5"/>
+<circle cx="600.0" cy="312.2" r="3.5" fill="#e67e22" stroke="white" stroke-width="1.5"/>
+<polyline points="80.0 50.0 132.0 50.0 184.0 50.0 236.0 50.0 288.0 275.2 340.0 275.2 392.0 275.2 444.0 275.2 496.0 312.2 548.0 312.2 600.0 312.2" fill="none" stroke="#9b59b6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="288.0" cy="275.2" r="3.5" fill="#9b59b6" stroke="white" stroke-width="1.5"/>
+<circle cx="340.0" cy="275.2" r="3.5" fill="#9b59b6" stroke="white" stroke-width="1.5"/>
+<circle cx="392.0" cy="275.2" r="3.5" fill="#9b59b6" stroke="white" stroke-width="1.5"/>
+<circle cx="444.0" cy="275.2" r="3.5" fill="#9b59b6" stroke="white" stroke-width="1.5"/>
+<circle cx="496.0" cy="312.2" r="3.5" fill="#9b59b6" stroke="white" stroke-width="1.5"/>
+<circle cx="548.0" cy="312.2" r="3.5" fill="#9b59b6" stroke="white" stroke-width="1.5"/>
+<circle cx="600.0" cy="312.2" r="3.5" fill="#9b59b6" stroke="white" stroke-width="1.5"/>
+<polyline points="80.0 50.0 132.0 50.0 184.0 50.0 236.0 275.2 288.0 275.2 340.0 275.2 392.0 275.2 444.0 275.2 496.0 275.2 548.0 312.2 600.0 312.2" fill="none" stroke="#1abc9c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="236.0" cy="275.2" r="3.5" fill="#1abc9c" stroke="white" stroke-width="1.5"/>
+<circle cx="288.0" cy="275.2" r="3.5" fill="#1abc9c" stroke="white" stroke-width="1.5"/>
+<circle cx="340.0" cy="275.2" r="3.5" fill="#1abc9c" stroke="white" stroke-width="1.5"/>
+<circle cx="392.0" cy="275.2" r="3.5" fill="#1abc9c" stroke="white" stroke-width="1.5"/>
+<circle cx="444.0" cy="275.2" r="3.5" fill="#1abc9c" stroke="white" stroke-width="1.5"/>
+<circle cx="496.0" cy="275.2" r="3.5" fill="#1abc9c" stroke="white" stroke-width="1.5"/>
+<circle cx="548.0" cy="312.2" r="3.5" fill="#1abc9c" stroke="white" stroke-width="1.5"/>
+<circle cx="600.0" cy="312.2" r="3.5" fill="#1abc9c" stroke="white" stroke-width="1.5"/>
+<line x1="605" y1="60" x2="625" y2="60" stroke="#e74c3c" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="615" cy="60" r="3" fill="#e74c3c" stroke="white" stroke-width="1"/>
+<text x="632" y="64" class="lb" fill="#555">川菜</text>
+<line x1="605" y1="82" x2="625" y2="82" stroke="#2ecc71" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="615" cy="82" r="3" fill="#2ecc71" stroke="white" stroke-width="1"/>
+<text x="632" y="86" class="lb" fill="#555">粤菜</text>
+<line x1="605" y1="104" x2="625" y2="104" stroke="#3498db" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="615" cy="104" r="3" fill="#3498db" stroke="white" stroke-width="1"/>
+<text x="632" y="108" class="lb" fill="#555">日料</text>
+<line x1="605" y1="126" x2="625" y2="126" stroke="#e67e22" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="615" cy="126" r="3" fill="#e67e22" stroke="white" stroke-width="1"/>
+<text x="632" y="130" class="lb" fill="#555">湘菜</text>
+<line x1="605" y1="148" x2="625" y2="148" stroke="#9b59b6" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="615" cy="148" r="3" fill="#9b59b6" stroke="white" stroke-width="1"/>
+<text x="632" y="152" class="lb" fill="#555">韩料</text>
+<line x1="605" y1="170" x2="625" y2="170" stroke="#1abc9c" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="615" cy="170" r="3" fill="#1abc9c" stroke="white" stroke-width="1"/>
+<text x="632" y="174" class="lb" fill="#555">西餐</text>
+</svg>
