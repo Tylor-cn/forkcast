@@ -10,7 +10,7 @@
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss)](https://tailwindcss.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
 [English](./README_EN.md) · [快速开始](#-快速开始) · [功能特性](#-功能特性) · [心理学基础](#-心理学基础)
 
@@ -46,6 +46,7 @@
 | 📈 双模式学习 | 短期会话偏好 + 长期历史趋势 |
 | 📱 移动优先 | 专为手机点外卖场景设计 |
 | 🗂️ 菜品管理 | 支持手动添加、CSV 批量导入 |
+| 🍜 530 道预置菜品 | 覆盖 17 大菜系，开箱即用 |
 
 ---
 
@@ -104,24 +105,24 @@ docker compose down
 
 ```
 ┌─────────────────────────────────────────────┐
-│                  Frontend                     │
+│                  Frontend                   │
 ├─────────────────────────────────────────────┤
-│  Next.js 16 (App Router)                     │
-│  React 19 + TypeScript                       │
-│  Tailwind CSS 4 + Framer Motion              │
-│  Zustand (State + LocalStorage Persist)      │
+│  Next.js 16 (App Router)                    │
+│  React 19 + TypeScript                      │
+│  Tailwind CSS 4 + Framer Motion             │
+│  Zustand (State + LocalStorage Persist)     │
 ├─────────────────────────────────────────────┤
-│              推荐引擎 Engine                  │
+│              推荐引擎 Engine                 │
 ├─────────────────────────────────────────────┤
-│  标签权重评分 + 多样性算法                     │
-│  时间衰减 + 上下文加成                         │
-│  非对称反馈 (拒绝惩罚 >> 选择奖励)             │
-│  三槽策略 (安全/熟悉/新奇)                     │
+│  标签权重评分 + 多样性算法                    │
+│  时间衰减 + 上下文加成                        │
+│  非对称反馈 (拒绝惩罚 >> 选择奖励)            │
+│  三槽策略 (安全/熟悉/新奇)                    │
 ├─────────────────────────────────────────────┤
-│              Deployment                       │
+│              Deployment                     │
 ├─────────────────────────────────────────────┤
-│  Docker Multi-stage Build (Alpine)           │
-│  Docker Compose                              │
+│  Docker Multi-stage Build (Alpine)          │
+│  Docker Compose                             │
 └─────────────────────────────────────────────┘
 ```
 
@@ -139,12 +140,36 @@ forkcast/
 │   │   ├── CollectionPage   # ⭐ 收藏页
 │   │   ├── SettingsPage     # ⚙️ 设置页
 │   │   └── ForagingPrompt   # 💡 觅食提示
-│   ├── store/               # Zustand 状态管理
-│   │   ├── slices/          # 状态切片 (dish/feedback/recommend/session/backup)
-│   │   ├── constants.ts     # 算法参数
+│   ├── store/               # Zustand 状态管理 (模块化)
+│   │   ├── slices/          # 5 个状态切片
+│   │   │   ├── dishSlice        # 菜品 CRUD
+│   │   │   ├── feedbackSlice    # 反馈权重调整
+│   │   │   ├── recommendSlice   # 推荐算法核心
+│   │   │   ├── sessionSlice     # 会话与偏好模式
+│   │   │   └── backupSlice      # 备选清单管理
+│   │   ├── constants.ts     # 算法调参常量
 │   │   └── utils.ts         # 权重计算工具
 │   ├── types/               # TypeScript 类型定义 + 预设标签数据
-│   └── utils/               # 工具函数 + 100 道预置菜品
+│   └── utils/
+│       ├── demoData.ts      # 数据聚合入口
+│       └── dishes/          # 530 道菜品 (按 17 个菜系分文件)
+│           ├── sichuan.ts       # 川菜 (50)
+│           ├── cantonese.ts     # 粤菜 (45)
+│           ├── chinese.ts       # 家常菜 (50)
+│           ├── japanese.ts      # 日料 (35)
+│           ├── korean.ts        # 韩料 (30)
+│           ├── western.ts       # 西餐 (35)
+│           ├── regional.ts      # 地方菜 (68)
+│           ├── hunan.ts         # 湘菜 (25)
+│           ├── fastfood.ts      # 快餐 (40)
+│           ├── hotpot.ts        # 火锅 (20)
+│           ├── bbq.ts           # 烧烤 (25)
+│           ├── southeast.ts     # 东南亚 (25)
+│           ├── indian.ts        # 印度菜 (10)
+│           ├── northeast.ts     # 东北菜 (15)
+│           ├── northwest.ts     # 西北菜 (15)
+│           ├── yunnan.ts        # 云贵菜 (12)
+│           └── other.ts         # 其他 (30)
 ├── Dockerfile               # 多阶段构建
 ├── docker-compose.yml       # 容器编排
 └── package.json
@@ -174,7 +199,7 @@ git push origin feature/amazing-feature
 
 ## 📄 License
 
-[MIT](LICENSE) © Forkcast
+[Apache License 2.0](LICENSE) © Forkcast
 
 ---
 

@@ -10,7 +10,7 @@
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss)](https://tailwindcss.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
 [中文](./README.md) · [Quick Start](#-quick-start) · [Features](#-features) · [Psychology](#-psychological-foundations)
 
@@ -46,6 +46,7 @@ A chance for every overworked office warrior to finally understand their own sto
 | 📈 Dual Learning | Session-based + historical preference learning |
 | 📱 Mobile-First | Designed for ordering on your phone |
 | 🗂️ Dish Management | Manual add or bulk CSV import |
+| 🍜 530 Pre-loaded Dishes | Covers 17 cuisines, ready out-of-the-box |
 
 ---
 
@@ -139,12 +140,36 @@ forkcast/
 │   │   ├── CollectionPage   # ⭐ Collection/favorites
 │   │   ├── SettingsPage     # ⚙️ Settings
 │   │   └── ForagingPrompt   # 💡 Foraging intervention
-│   ├── store/               # Zustand state management
-│   │   ├── slices/          # State slices (dish/feedback/recommend/session/backup)
+│   ├── store/               # Zustand state (modular slices)
+│   │   ├── slices/          # 5 state slices
+│   │   │   ├── dishSlice        # Dish CRUD
+│   │   │   ├── feedbackSlice    # Feedback weight adjustment
+│   │   │   ├── recommendSlice   # Core recommendation algorithm
+│   │   │   ├── sessionSlice     # Session & preference modes
+│   │   │   └── backupSlice      # Backup list management
 │   │   ├── constants.ts     # Algorithm tuning parameters
 │   │   └── utils.ts         # Weight utility functions
 │   ├── types/               # TypeScript types + predefined tag data
-│   └── utils/               # Utilities + 100 pre-loaded demo dishes
+│   └── utils/
+│       ├── demoData.ts      # Data aggregation entry
+│       └── dishes/          # 530 dishes (17 cuisine files)
+│           ├── sichuan.ts       # Sichuan (50)
+│           ├── cantonese.ts     # Cantonese (45)
+│           ├── chinese.ts       # Home-style (50)
+│           ├── japanese.ts      # Japanese (35)
+│           ├── korean.ts        # Korean (30)
+│           ├── western.ts       # Western (35)
+│           ├── regional.ts      # Regional (68)
+│           ├── hunan.ts         # Hunan (25)
+│           ├── fastfood.ts      # Fast food (40)
+│           ├── hotpot.ts        # Hot pot (20)
+│           ├── bbq.ts           # BBQ (25)
+│           ├── southeast.ts     # Southeast Asian (25)
+│           ├── indian.ts        # Indian (10)
+│           ├── northeast.ts     # Northeast (15)
+│           ├── northwest.ts     # Northwest (15)
+│           ├── yunnan.ts        # Yunnan-Guizhou (12)
+│           └── other.ts         # Other (30)
 ├── Dockerfile               # Multi-stage build
 ├── docker-compose.yml       # Container orchestration
 └── package.json
@@ -174,7 +199,7 @@ git push origin feature/amazing-feature
 
 ## 📄 License
 
-[MIT](LICENSE) © Forkcast
+[Apache License 2.0](LICENSE) © Forkcast
 
 ---
 
