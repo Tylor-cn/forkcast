@@ -6,7 +6,6 @@ import { X, Star, Heart, RefreshCw, Check, Ban } from 'lucide-react'
 import { useAppStore } from '@/store/useAppStore'
 import { Dish, PREDEFINED_TAGS, Tag } from '@/types'
 import ExcludeTagModal from './ExcludeTagModal'
-import ForagingPrompt from './ForagingPrompt'
 
 function BackupButton({ externalTrigger = 0 }: { externalTrigger?: number }) {
   const { backupList, dishes, removeFromBackup, pickFromBackup } = useAppStore()
@@ -116,7 +115,6 @@ export function RecommendPage() {
     hasCompletedPick,
     lastPickedDish,
     refreshCount,
-    consecutiveRejects,
     handleFeedback,
     refreshRecommendation,
     startNewSession,
@@ -127,8 +125,6 @@ export function RecommendPage() {
   const [displayDishes, setDisplayDishes] = useState<Dish[]>([])
   const [isInitialized, setIsInitialized] = useState(false)
   const [showExcludeModal, setShowExcludeModal] = useState(false)
-  const [forceShowBackup, setForceShowBackup] = useState(0)
-  const resetPreferences = useAppStore(s => s.resetPreferences)
 
   useEffect(() => {
     if (dishes.length > 0 && !isInitialized) {
@@ -331,13 +327,6 @@ export function RecommendPage() {
         </div>
       )}
 
-      {consecutiveRejects >= 5 && (
-        <div className="fixed bottom-20 left-0 right-0 flex justify-center">
-          <div className="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-sm">
-            要不要试试备选列表？
-          </div>
-        </div>
-      )}
 
       {showExcludeModal && (
         <ExcludeTagModal
@@ -350,17 +339,6 @@ export function RecommendPage() {
         />
       )}
 
-      <ForagingPrompt
-        onSuggestChange={handleRefresh}
-        onOpenExclude={() => setShowExcludeModal(true)}
-        onOpenBackup={() => setForceShowBackup(prev => prev + 1)}
-        onResetPreferences={() => {
-          resetPreferences()
-          startNewSession()
-          setIsInitialized(false)
-          setDisplayDishes([])
-        }}
-      />
     </div>
   )
 }

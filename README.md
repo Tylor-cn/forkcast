@@ -138,8 +138,7 @@ forkcast/
 │   │   ├── RecommendPage    # 🃏 核心推荐页
 │   │   ├── MenuPage         # 🗂️ 菜品管理
 │   │   ├── CollectionPage   # ⭐ 收藏页
-│   │   ├── SettingsPage     # ⚙️ 设置页
-│   │   └── ForagingPrompt   # 💡 觅食提示
+│   │   └── SettingsPage     # ⚙️ 设置页
 │   ├── store/               # Zustand 状态管理 (模块化)
 │   │   ├── slices/          # 5 个状态切片
 │   │   │   ├── dishSlice        # 菜品 CRUD

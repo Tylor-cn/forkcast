@@ -138,8 +138,7 @@ forkcast/
 │   │   ├── RecommendPage    # 🃏 Core recommendation view
 │   │   ├── MenuPage         # 🗂️ Dish management
 │   │   ├── CollectionPage   # ⭐ Collection/favorites
-│   │   ├── SettingsPage     # ⚙️ Settings
-│   │   └── ForagingPrompt   # 💡 Foraging intervention
+│   │   └── SettingsPage     # ⚙️ Settings
 │   ├── store/               # Zustand state (modular slices)
 │   │   ├── slices/          # 5 state slices
 │   │   │   ├── dishSlice        # Dish CRUD
