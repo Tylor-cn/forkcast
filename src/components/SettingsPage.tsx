@@ -159,7 +159,7 @@ export function SettingsPage() {
 
           <p className="text-xs text-gray-400 mt-2 text-center">
             重置偏好：清空偏好学习数据、Pick历史和备选列表<br />
-            清除存储：删除所有本地数据，重新加载100道菜品
+            清除存储：删除所有本地数据，重新加载530道菜品
           </p>
         </div>
 
@@ -239,7 +239,7 @@ export function SettingsPage() {
             </div>
 
             <p className="text-gray-600 mb-6">
-              这将删除所有本地存储数据，并重新加载100道示例菜品。此操作不可撤销。
+              这将删除所有本地存储数据，并重新加载530道示例菜品。此操作不可撤销。
             </p>
 
             <div className="flex gap-3">
