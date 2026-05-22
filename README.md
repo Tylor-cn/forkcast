@@ -12,7 +12,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
-[中文](./README_CN.md) · [Quick Start](#-quick-start) · [Features](#-features) · [Psychology](#-psychological-foundations) · [Algorithm](./ALGORITHM.md)
+[中文](./README_CN.md) · [Quick Start](#-quick-start) · [Features](#-features) · [Psychology](#-psychological-foundations) · [Algorithm](./ALGORITHM_EN.md)
 
 </div>
 
@@ -63,7 +63,7 @@ The recommendation algorithm is grounded in peer-reviewed cognitive psychology:
 | **Information Foraging** (Pirolli & Card, 1999) | Three-card patch strategy maximizes information density |
 | **Affective Forecasting** (Wilson & Gilbert, 2003) | Mood / time / seasonal consistency in preference modeling |
 
-> Curious about the algorithm? Check out: **[ALGORITHM.md](./ALGORITHM.md)**.
+> Curious about the algorithm? Check out: **[ALGORITHM_EN.md](./ALGORITHM_EN.md)**.
 
 ---
 
@@ -173,7 +173,8 @@ forkcast/
 │           ├── northwest.ts     # Northwest (15)
 │           ├── yunnan.ts        # Yunnan-Guizhou (12)
 │           └── other.ts         # Other (30)
-├── ALGORITHM.md             # Algorithm design doc
+├── ALGORITHM_EN.md          # Algorithm design doc (English)
+├── ALGORITHM.md             # Algorithm design doc (中文)
 ├── Dockerfile               # Multi-stage build
 ├── docker-compose.yml       # Container orchestration
 └── package.json
