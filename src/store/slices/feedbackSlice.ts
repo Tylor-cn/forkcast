@@ -11,7 +11,6 @@ import {
 import { AppStore } from '../useAppStore'
 import { clamp } from '../utils'
 import {
-  ShownResult,
   REJECT_SHORT_PENALTY,
   REJECT_LONG_PENALTY,
   REJECT_ASSOCIATION_PENALTY,
@@ -35,7 +34,7 @@ export interface FeedbackSlice {
   cuisineWeights: Record<string, CuisineWeight>
   consecutiveRejects: number
   pickHistory: PickRecord[]
-  shownInSession: Record<string, FeedbackType | 'shown'>
+  shownInSession: Record<string, FeedbackType>
   rejectedInSession: string[]
   hasCompletedPick: boolean
   lastPickedDish?: Dish
@@ -63,14 +62,18 @@ export const createFeedbackSlice: StateCreator<AppStore, [], [], FeedbackSlice> 
     const isPickImmune = dish.stats.lastPickTimestamp != null &&
       (Date.now() - dish.stats.lastPickTimestamp) < PICK_IMMUNITY_MS
 
+    const escalation = feedbackType === 'reject'
+      ? 1 + Math.min(state.consecutiveRejects * CONSECUTIVE_REJECT_FACTOR, MAX_CONSECUTIVE_PENALTY)
+      : 1
+    const longTermEscalation = 1 + (escalation - 1) * 0.3
+
     dish.tags.forEach(tagId => {
       const weight = newTagWeights[tagId]
       if (!weight) return
 
       if (feedbackType === 'reject') {
-        const escalation = 1 + Math.min(state.consecutiveRejects * CONSECUTIVE_REJECT_FACTOR, MAX_CONSECUTIVE_PENALTY)
-        weight.shortTermWeight = clamp(weight.shortTermWeight * REJECT_SHORT_PENALTY * escalation)
-        weight.longTermWeight = clamp(weight.longTermWeight * REJECT_LONG_PENALTY * (1 + escalation * 0.3))
+        weight.shortTermWeight = clamp(weight.shortTermWeight * REJECT_SHORT_PENALTY / escalation)
+        weight.longTermWeight = clamp(weight.longTermWeight * REJECT_LONG_PENALTY / longTermEscalation)
 
         if (!isPickImmune) {
           const associations = TAG_ASSOCIATIONS[tagId]
@@ -98,9 +101,8 @@ export const createFeedbackSlice: StateCreator<AppStore, [], [], FeedbackSlice> 
       if (!weight) return
 
       if (feedbackType === 'reject') {
-        const escalation = 1 + Math.min(state.consecutiveRejects * CONSECUTIVE_REJECT_FACTOR, MAX_CONSECUTIVE_PENALTY)
-        weight.shortTermWeight = clamp(weight.shortTermWeight * CUISINE_REJECT_SHORT_PENALTY * escalation)
-        weight.longTermWeight = clamp(weight.longTermWeight * CUISINE_REJECT_LONG_PENALTY * (1 + escalation * 0.3))
+        weight.shortTermWeight = clamp(weight.shortTermWeight * CUISINE_REJECT_SHORT_PENALTY / escalation)
+        weight.longTermWeight = clamp(weight.longTermWeight * CUISINE_REJECT_LONG_PENALTY / longTermEscalation)
       } else if (feedbackType === 'backup') {
         weight.shortTermWeight = clamp(weight.shortTermWeight * CUISINE_BACKUP_SHORT_BOOST)
         weight.longTermWeight = clamp(weight.longTermWeight * CUISINE_BACKUP_LONG_BOOST)
@@ -129,7 +131,7 @@ export const createFeedbackSlice: StateCreator<AppStore, [], [], FeedbackSlice> 
       return d
     })
 
-    const newShownInSession = { ...state.shownInSession, [dishId]: feedbackType as ShownResult }
+    const newShownInSession = { ...state.shownInSession, [dishId]: feedbackType }
     const newRejectedInSession = feedbackType === 'reject'
       ? [...state.rejectedInSession, dishId]
       : state.rejectedInSession

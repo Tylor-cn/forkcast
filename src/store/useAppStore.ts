@@ -10,8 +10,6 @@ import { BackupSlice, createBackupSlice } from './slices/backupSlice'
 
 export type AppStore = DishSlice & FeedbackSlice & RecommendSlice & SessionSlice & BackupSlice
 
-export { computeCuisineYieldRate } from './slices/recommendSlice'
-
 export const useAppStore = create<AppStore>()(
   persist(
     (set, get, store) => ({
@@ -38,9 +36,6 @@ export const useAppStore = create<AppStore>()(
       }),
       onRehydrateStorage: () => (state) => {
         if (!state) return
-        if (Array.isArray(state.shownInSession)) {
-          state.shownInSession = {}
-        }
         if (state.dishes && state.dishes.length > 0) {
           state.dishes.forEach(d => {
             if (d.stats && !('lastPickTimestamp' in d.stats)) {

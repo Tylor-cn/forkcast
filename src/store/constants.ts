@@ -28,18 +28,16 @@ export const CUISINE_BACKUP_LONG_BOOST = 1.03
 
 // 时间衰减常数（tau）
 export const DISH_DECAY_TAU = 2 * 24 * 60 * 60 * 1000
-export const CUISINE_DECAY_TAU = 7 * 24 * 60 * 60 * 1000
 
 // 上下文加成
 export const CONTEXT_BONUS_TIME = 1.3
 export const CONTEXT_BONUS_SEASON = 1.15
 
 // 已展示惩罚值
-export type ShownResult = 'shown' | 'backup' | 'reject' | 'pick'
+import { FeedbackType } from '@/types'
 
-export const SHOWN_PENALTY_VALUES: Record<ShownResult, number> = {
+export const SHOWN_PENALTY_VALUES: Record<FeedbackType, number> = {
   pick: 1.0,
   backup: 0.85,
   reject: 0.3,
-  shown: 0.5,
 }

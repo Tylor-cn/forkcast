@@ -1,9 +1,8 @@
 import { StateCreator } from 'zustand'
-import { Dish, TagWeight, CuisineWeight, UserPreferences, PickRecord } from '@/types'
+import { Dish, TagWeight, CuisineWeight, UserPreferences, FeedbackType } from '@/types'
 import { AppStore } from '../useAppStore'
 import { timeDecay, getShownPenalty } from '../utils'
 import {
-  ShownResult,
   DISH_DECAY_TAU,
   CONTEXT_BONUS_TIME,
   CONTEXT_BONUS_SEASON,
@@ -22,7 +21,7 @@ const calculateScore = (
   tagWeights: Record<string, TagWeight>,
   cuisineWeights: Record<string, CuisineWeight>,
   preferences: UserPreferences,
-  shownInSession: Record<string, ShownResult>
+  shownInSession: Record<string, FeedbackType>
 ): number => {
   let tagScoreSum = 0
   let tagCount = 0
@@ -76,6 +75,7 @@ const calculateScore = (
   else if (month >= 6 && month <= 8 && dish.tags.includes('season-summer')) contextBonus *= CONTEXT_BONUS_SEASON
   else if (month >= 9 && month <= 11 && dish.tags.includes('season-autumn')) contextBonus *= CONTEXT_BONUS_SEASON
   else if ((month === 12 || month <= 2) && dish.tags.includes('season-winter')) contextBonus *= CONTEXT_BONUS_SEASON
+  else if (dish.tags.includes('season-all')) contextBonus *= CONTEXT_BONUS_SEASON
 
   const shownPenalty = getShownPenalty(dish.id, shownInSession)
 
@@ -106,19 +106,6 @@ const calculateDiversityScore = (
   return totalDiversity / selected.length
 }
 
-export const computeCuisineYieldRate = (
-  cuisineId: string,
-  pickHistory: PickRecord[],
-  dishes: Dish[]
-): number => {
-  const picks = pickHistory.filter(p => p.tags.includes(cuisineId)).length
-  const rejects = dishes
-    .filter(d => d.tags.includes(cuisineId))
-    .reduce((sum, d) => sum + d.stats.rejectCount, 0)
-  const total = picks + rejects
-  return total > 0 ? picks / total : 0.5
-}
-
 export const createRecommendSlice: StateCreator<AppStore, [], [], RecommendSlice> = (set, get) => ({
   refreshCount: 0,
   lastRecommendedIds: [],
@@ -147,7 +134,7 @@ export const createRecommendSlice: StateCreator<AppStore, [], [], RecommendSlice
     const scored = survivors
       .map(dish => ({
         dish,
-        score: calculateScore(dish, state.tagWeights, state.cuisineWeights, state.preferences, state.shownInSession as Record<string, ShownResult>),
+        score: calculateScore(dish, state.tagWeights, state.cuisineWeights, state.preferences, state.shownInSession),
         cuisines: dish.tags.filter(t => t.startsWith('cuisine-')),
         tastes: dish.tags.filter(t => t.startsWith('taste-')),
       }))
