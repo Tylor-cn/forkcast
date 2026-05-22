@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, Star, Heart, RefreshCw, Check, Ban } from 'lucide-react'
+import { X, Star, RefreshCw, Check, Ban } from 'lucide-react'
 import { useAppStore } from '@/store/useAppStore'
 import { Dish, PREDEFINED_TAGS, Tag } from '@/types'
 import ExcludeTagModal from './ExcludeTagModal'
@@ -151,26 +151,16 @@ export function RecommendPage() {
     }
   }, [hasCompletedPick, isInitialized, getCurrentRecommendations, updateLastRecommendedIds])
 
-  const getNextDish = (excludeId: string): Dish | undefined => {
+  const getNextDish = (): Dish | undefined => {
     const store = useAppStore.getState()
     const allRecommendations = store.getCurrentRecommendations()
     const currentIds = new Set(displayDishes.map(d => d.id))
     return allRecommendations.find(d => !currentIds.has(d.id))
   }
 
-  const handleReject = (dishId: string) => {
-    handleFeedback(dishId, 'reject')
-    const nextDish = getNextDish(dishId)
-    if (nextDish) {
-      setDisplayDishes(prev => prev.map(d => d.id === dishId ? nextDish : d))
-    } else {
-      setDisplayDishes(prev => prev.filter(d => d.id !== dishId))
-    }
-  }
-
   const handleBackup = (dishId: string) => {
     handleFeedback(dishId, 'backup')
-    const nextDish = getNextDish(dishId)
+    const nextDish = getNextDish()
     if (nextDish) {
       setDisplayDishes(prev => prev.map(d => d.id === dishId ? nextDish : d))
     } else {
@@ -279,7 +269,7 @@ export function RecommendPage() {
           {recommendations.length > 0 ? (
             <div className="grid grid-cols-3 gap-3 w-full max-w-lg">
               {recommendations.map((dish, index) => (
-                <DishCard3
+                <DishCard
                   key={dish.id}
                   dish={dish}
                   index={index}
@@ -343,7 +333,7 @@ export function RecommendPage() {
   )
 }
 
-function DishCard3({ dish, index, onBackup, onPick }: {
+function DishCard({ dish, index, onBackup, onPick }: {
   dish: Dish
   index: number
   onBackup: () => void

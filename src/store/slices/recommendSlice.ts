@@ -70,12 +70,12 @@ const calculateScore = (
   else if (hour >= 11 && hour <= 13 && dish.tags.includes('period-lunch')) contextBonus *= CONTEXT_BONUS_TIME
   else if (hour >= 14 && hour <= 17 && dish.tags.includes('period-snack')) contextBonus *= CONTEXT_BONUS_TIME
   else if (hour >= 18 && hour <= 21 && dish.tags.includes('period-dinner')) contextBonus *= CONTEXT_BONUS_TIME
-  else if (hour >= 22 || hour <= 1 && dish.tags.includes('period-midnight')) contextBonus *= CONTEXT_BONUS_TIME
+  else if ((hour >= 22 || hour <= 1) && dish.tags.includes('period-midnight')) contextBonus *= CONTEXT_BONUS_TIME
 
   if (month >= 3 && month <= 5 && dish.tags.includes('season-spring')) contextBonus *= CONTEXT_BONUS_SEASON
   else if (month >= 6 && month <= 8 && dish.tags.includes('season-summer')) contextBonus *= CONTEXT_BONUS_SEASON
   else if (month >= 9 && month <= 11 && dish.tags.includes('season-autumn')) contextBonus *= CONTEXT_BONUS_SEASON
-  else if (month === 12 || month <= 2 && dish.tags.includes('season-winter')) contextBonus *= CONTEXT_BONUS_SEASON
+  else if ((month === 12 || month <= 2) && dish.tags.includes('season-winter')) contextBonus *= CONTEXT_BONUS_SEASON
 
   const shownPenalty = getShownPenalty(dish.id, shownInSession)
 

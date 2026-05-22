@@ -57,30 +57,9 @@ export interface SessionRecord {
   mode: SessionMode
 }
 
-export interface RecommendationState {
-  currentDishes: Dish[]
-  shownInSession: Record<string, FeedbackType | 'shown'>
-  rejectedInSession: string[]
-}
-
 export interface UserPreferences {
   sessionMode: SessionMode
   mixedRatio: number
-}
-
-export interface AppState {
-  dishes: Dish[]
-  tagWeights: Record<string, TagWeight>
-  cuisineWeights: Record<string, CuisineWeight>
-  pickHistory: PickRecord[]
-  backupList: BackupRecord[]
-  sessions: SessionRecord[]
-  currentSession?: SessionRecord
-  recommendation: RecommendationState
-  preferences: UserPreferences
-  isLoading: boolean
-  hasCompletedPick: boolean
-  lastPickedDish?: Dish
 }
 
 export const TAG_CATEGORIES: Record<TagCategory, { label: string; icon: string }> = {
