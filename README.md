@@ -94,6 +94,10 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) to get started.
 
+### 🚀 One-Click Deploy
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Tylor-cn/forkcast)
+
 ### 🐳 Docker Deployment
 
 ```bash
