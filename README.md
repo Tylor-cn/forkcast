@@ -67,6 +67,10 @@ The recommendation algorithm is grounded in peer-reviewed cognitive psychology:
 
 ---
 
+## 🎮 Try It Online
+
+**Live Demo:** [https://forkcast-lyart.vercel.app](https://forkcast-lyart.vercel.app)
+
 ## 🚀 Quick Start
 
 ### Prerequisites
