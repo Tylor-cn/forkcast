@@ -322,7 +322,7 @@ export function RecommendPage() {
               换一批
             </button>
 
-            <BackupButton externalTrigger={forceShowBackup} />
+            <BackupButton />
           </div>
         </div>
       )}
