@@ -1,0 +1,111 @@
+import { Dish } from '@/types'
+
+const FIXED_TIMESTAMP = 1700000000000
+
+export const NORTHWEST_DISHES: Dish[] = [
+  {
+    id: 'demo-nw1',
+    name: '羊肉泡馍',
+    tags: ['cuisine-northwest', 'taste-salty', 'taste-umami', 'taste-heavy', 'type-soup', 'price-moderate', 'time-slow', 'period-lunch', 'period-dinner', 'temp-hot', 'season-winter'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-nw2',
+    name: '肉夹馍',
+    tags: ['cuisine-northwest', 'taste-salty', 'taste-fragrant', 'taste-crispy', 'type-snack', 'price-budget', 'time-fast', 'period-lunch', 'period-snack', 'temp-hot', 'season-all'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-nw3',
+    name: 'biangbiang面',
+    tags: ['cuisine-northwest', 'taste-salty', 'taste-heavy', 'taste-chewy', 'type-noodles', 'price-budget', 'time-normal', 'period-lunch', 'period-dinner', 'temp-hot', 'season-all'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-nw4',
+    name: '油泼面',
+    tags: ['cuisine-northwest', 'taste-mild-spicy', 'taste-fragrant', 'taste-chewy', 'type-noodles', 'price-budget', 'time-fast', 'period-lunch', 'temp-hot', 'season-all'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-nw5',
+    name: '凉皮',
+    tags: ['cuisine-northwest', 'taste-sour', 'taste-mild-spicy', 'taste-slurpy', 'type-cold', 'price-budget', 'time-fast', 'period-lunch', 'period-snack', 'temp-cold', 'season-summer'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-nw6',
+    name: '臊子面',
+    tags: ['cuisine-northwest', 'taste-sour', 'taste-umami', 'taste-slurpy', 'type-noodles', 'price-budget', 'time-normal', 'period-lunch', 'temp-hot', 'season-all'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-nw7',
+    name: '葫芦头',
+    tags: ['cuisine-northwest', 'taste-salty', 'taste-umami', 'taste-heavy', 'type-soup', 'price-moderate', 'time-slow', 'period-lunch', 'temp-hot', 'season-winter'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-nw8',
+    name: '甑糕',
+    tags: ['cuisine-northwest', 'taste-sweet', 'taste-soft', 'type-dimsum', 'price-budget', 'time-fast', 'period-breakfast', 'period-snack', 'temp-hot', 'season-all'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-nw9',
+    name: '新疆大盘鸡',
+    tags: ['cuisine-northwest', 'taste-medium-spicy', 'taste-heavy', 'taste-umami', 'type-hot', 'price-moderate', 'time-slow', 'period-lunch', 'period-dinner', 'temp-hot', 'season-all'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-nw10',
+    name: '手抓饭',
+    tags: ['cuisine-northwest', 'taste-salty', 'taste-fragrant', 'taste-umami', 'type-rice', 'price-moderate', 'time-normal', 'period-lunch', 'period-dinner', 'temp-hot', 'season-all'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-nw11',
+    name: '烤馕',
+    tags: ['cuisine-northwest', 'taste-fragrant', 'taste-crispy', 'taste-chewy', 'type-staple', 'price-budget', 'time-fast', 'period-breakfast', 'period-lunch', 'temp-hot', 'season-all'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-nw12',
+    name: '羊肉串',
+    tags: ['cuisine-northwest', 'taste-fragrant', 'taste-medium-spicy', 'taste-salty', 'type-snack', 'price-moderate', 'time-normal', 'period-dinner', 'period-midnight', 'temp-hot', 'season-all'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-nw13',
+    name: '过油肉',
+    tags: ['cuisine-northwest', 'taste-salty', 'taste-umami', 'taste-tender', 'type-hot', 'price-moderate', 'time-normal', 'period-lunch', 'period-dinner', 'temp-hot', 'season-all'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-nw14',
+    name: '酿皮',
+    tags: ['cuisine-northwest', 'taste-sour', 'taste-mild-spicy', 'taste-chewy', 'type-cold', 'price-budget', 'time-fast', 'period-lunch', 'period-snack', 'temp-cold', 'season-summer'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-nw15',
+    name: '牛肉拉面',
+    tags: ['cuisine-northwest', 'taste-salty', 'taste-umami', 'taste-slurpy', 'type-noodles', 'price-budget', 'time-fast', 'period-breakfast', 'period-lunch', 'temp-hot', 'season-all'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+]

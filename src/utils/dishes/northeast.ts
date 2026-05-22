@@ -1,0 +1,111 @@
+import { Dish } from '@/types'
+
+const FIXED_TIMESTAMP = 1700000000000
+
+export const NORTHEAST_DISHES: Dish[] = [
+  {
+    id: 'demo-ne1',
+    name: '锅包肉',
+    tags: ['cuisine-northeast', 'taste-sour-sweet', 'taste-crispy', 'taste-tender', 'type-hot', 'price-moderate', 'time-normal', 'period-lunch', 'period-dinner', 'temp-hot', 'season-all'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-ne2',
+    name: '猪肉炖粉条',
+    tags: ['cuisine-northeast', 'taste-salty', 'taste-heavy', 'taste-soft', 'type-hot', 'price-moderate', 'time-slow', 'period-lunch', 'period-dinner', 'temp-hot', 'season-winter'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-ne3',
+    name: '小鸡炖蘑菇',
+    tags: ['cuisine-northeast', 'taste-umami', 'taste-salty', 'taste-tender', 'type-hot', 'price-moderate', 'time-slow', 'period-dinner', 'temp-hot', 'season-winter'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-ne4',
+    name: '铁锅炖大鹅',
+    tags: ['cuisine-northeast', 'taste-salty', 'taste-heavy', 'taste-umami', 'type-hot', 'price-premium', 'time-slow', 'period-dinner', 'temp-hot', 'season-winter'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-ne5',
+    name: '溜肉段',
+    tags: ['cuisine-northeast', 'taste-sour-sweet', 'taste-crispy', 'taste-tender', 'type-hot', 'price-moderate', 'time-normal', 'period-lunch', 'period-dinner', 'temp-hot', 'season-all'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-ne6',
+    name: '尖椒干豆腐',
+    tags: ['cuisine-northeast', 'taste-mild-spicy', 'taste-salty', 'taste-fragrant', 'type-hot', 'price-budget', 'time-fast', 'period-lunch', 'period-dinner', 'temp-hot', 'season-all'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-ne7',
+    name: '拔丝地瓜',
+    tags: ['cuisine-northeast', 'taste-sweet', 'taste-crispy', 'taste-soft', 'type-dessert', 'price-budget', 'time-normal', 'period-dinner', 'period-snack', 'temp-hot', 'season-all'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-ne8',
+    name: '东北大拉皮',
+    tags: ['cuisine-northeast', 'taste-sour', 'taste-fresh', 'taste-slurpy', 'type-cold', 'price-budget', 'time-fast', 'period-lunch', 'period-dinner', 'temp-cold', 'season-summer'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-ne9',
+    name: '酱骨架',
+    tags: ['cuisine-northeast', 'taste-salty', 'taste-heavy', 'taste-fragrant', 'type-hot', 'price-moderate', 'time-slow', 'period-dinner', 'temp-hot', 'season-all'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-ne10',
+    name: '杀猪菜',
+    tags: ['cuisine-northeast', 'taste-salty', 'taste-heavy', 'taste-sour', 'type-hot', 'price-moderate', 'time-slow', 'period-dinner', 'temp-hot', 'season-winter'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-ne11',
+    name: '东北乱炖',
+    tags: ['cuisine-northeast', 'taste-salty', 'taste-heavy', 'taste-umami', 'type-hot', 'price-moderate', 'time-slow', 'period-lunch', 'period-dinner', 'temp-hot', 'season-winter'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-ne12',
+    name: '蘸酱菜',
+    tags: ['cuisine-northeast', 'taste-fresh', 'taste-light', 'taste-cold-dish', 'type-cold', 'price-budget', 'time-fast', 'period-lunch', 'period-dinner', 'temp-cold', 'season-summer'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-ne13',
+    name: '东北水饺',
+    tags: ['cuisine-northeast', 'taste-umami', 'taste-tender', 'taste-chewy', 'type-staple', 'price-budget', 'time-normal', 'period-lunch', 'period-dinner', 'temp-hot', 'season-all'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-ne14',
+    name: '冷面',
+    tags: ['cuisine-northeast', 'taste-sour-sweet', 'taste-fresh', 'taste-slurpy', 'type-noodles', 'price-budget', 'time-fast', 'period-lunch', 'temp-cold', 'season-summer'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+  {
+    id: 'demo-ne15',
+    name: '烤冷面',
+    tags: ['cuisine-northeast', 'taste-sour-sweet', 'taste-chewy', 'taste-mild-spicy', 'type-snack', 'price-budget', 'time-fast', 'period-snack', 'period-midnight', 'temp-hot', 'season-all'],
+    stats: { pickCount: 0, rejectCount: 0 },
+    createdAt: FIXED_TIMESTAMP,
+  },
+]
